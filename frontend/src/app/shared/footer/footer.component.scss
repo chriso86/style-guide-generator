@@ -1,0 +1,15 @@
+@import "../../../theme/theme";
+
+.sgg-footer {
+  // Layout
+  width: 100%;
+  height: 36px;
+  position: fixed;
+  bottom: 0;
+
+  // Style
+  background: $theme-footer-bg;
+  color: $theme-footer-font;
+  text-align: center;
+  line-height: 36px;
+}

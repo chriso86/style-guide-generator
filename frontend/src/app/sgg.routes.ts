@@ -1,0 +1,11 @@
+import {Routes} from '@angular/router';
+import {HomeComponent} from './pages/home/home.component';
+import {ColorsComponent} from './pages/colors/colors.component';
+import {FontsComponent} from './pages/fonts/fonts.component';
+
+export const ROUTES: Routes = [
+  { path: 'colors', component: ColorsComponent },
+  { path: 'fonts', component: FontsComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: HomeComponent }
+];

@@ -1,0 +1,59 @@
+@import "../variables/colors";
+
+@mixin theme-link() {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $theme-blue-default;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover, &:active, &:active:hover, :focus, :visited {
+    background-color: $theme-white-active;
+    color: $theme-blue-active;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &[disabled] {
+    color: $theme-blue-disabled;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin call-to-action-btn-1() {
+  border: none;
+  padding: 10px 15px;
+  background-color: $theme-blue-default;
+  color: $theme-white-default;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+  }
+
+  &:hover, &:active, &:active:hover, :focus, :visited {
+    background-color: $theme-blue-active;
+    color: $theme-white-active;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &[disabled] {
+    background-color: $theme-blue-disabled;
+    color: $theme-white-disabled;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

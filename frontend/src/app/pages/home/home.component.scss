@@ -1,0 +1,5 @@
+@import "../../../theme/theme";
+
+.sgg-call-to-action-button {
+  @include call-to-action-btn-1();
+}

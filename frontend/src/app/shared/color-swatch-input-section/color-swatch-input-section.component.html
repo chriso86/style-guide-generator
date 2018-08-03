@@ -1,0 +1,59 @@
+<form [formGroup]="form">
+  <div class="sgg-color-input-container">
+    <!-- Color picker -->
+    <mat-form-field>
+      <input type="color"
+             id="colorValue"
+             name="colorValue"
+             formControl="colorValue"
+             [value]="color.value"
+             class="sgg-color-input-value">
+
+      <!-- Error text -->
+      <mat-error *ngIf="form.controls['colorValue'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Color label -->
+    <mat-form-field>
+      <input type="text"
+             id="colorLabel"
+             name="colorLabel"
+             formControl="colorLabel"
+             [value]="color.label"
+             placeholder="Name"
+             class="sgg-color-input-label">
+
+      <!-- Error text -->
+      <mat-error *ngIf="form.controls['colorLabel'].hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Color description -->
+    <mat-form-field>
+      <mat-label> Description / Usage </mat-label>
+      <textarea id="colorDescription"
+                name="colorLabel"
+                formControl="colorLabel"
+                [value]="color.label"
+                class="sgg-color-input-description">
+      </textarea>
+    </mat-form-field>
+
+    <!-- Control buttons -->
+    <!-- Confirm -->
+    <button class="sgg-btn-confirm"
+            type="submit"
+            (click)="confirmAddColor()">
+      Confirm
+    </button>
+
+    <!-- Cancel -->
+    <button class="sgg-btn-cancel"
+            (click)="cancelAddColor()">
+      Cancel
+    </button>
+  </div>
+</form>

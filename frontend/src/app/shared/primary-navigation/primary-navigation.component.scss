@@ -1,0 +1,25 @@
+@import "../../../theme/theme";
+
+.sgg-primary-navigation {
+  // Layout
+  width: 20%;
+  min-height: 100vh;
+  padding: 15px;
+
+  // Style
+  border-right: 2px solid $theme-header-border;
+
+  a {
+    // Layout
+    display: block;
+    padding: 15px 10px;
+
+    // Style
+    @include theme-link();
+    text-decoration: none;
+  }
+}
+
+.sgg-main-content {
+  padding: 15px;
+}
