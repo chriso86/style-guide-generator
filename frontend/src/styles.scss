@@ -24,16 +24,15 @@ html, body {
   padding: 0;
 
   // Style
-  font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
-  font-size: 16px;
+  font-family: $theme-standard-font-family;
+  font-size: $theme-standard-font-size;
   color: $theme-font-primary;
 }
-
 
 /* Theme hacks */
 .mat-drawer-container {
   // #{$var} is string interpolation
-  height: calc(100vh - #{$theme-header-height});
+  height: calc(100vh - #{$theme-header-height} - #{$theme-footer-height});
 }
 
 

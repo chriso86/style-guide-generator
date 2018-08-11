@@ -1,2 +1,16 @@
+// General
+$theme-standard-margin: 10px;
+$theme-standard-padding: 10px;
+
 // Header
 $theme-header-height: 58px;
+
+// Side Navigation
+$theme-side-navigation-margin: 361px;
+
+// Footer
+$theme-footer-height: 36px;
+
+%sgg-component {
+  padding: $theme-standard-padding;
+}
