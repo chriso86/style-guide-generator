@@ -1,0 +1,29 @@
+@import "../../../theme/theme";
+
+.sgg-color {
+  // Layout
+  padding: $theme-color-swatch-padding;
+  border: 1px solid $theme-color-swatch-border-color;
+
+  .sgg-color-sample {
+    // Layout
+    height: $theme-color-swatch-sample-height;
+    margin-bottom: 10px;
+  }
+
+  .sgg-color-info {
+    label {
+      // Style
+      font-size: $theme-color-swatch-label-font-size;
+    }
+
+    p {
+      // Layout
+      margin: 10px 0 0 0 !important;
+      padding: $theme-color-swatch-padding;
+
+      // Style
+      background-color: $theme-color-swatch-description-bg;
+    }
+  }
+}

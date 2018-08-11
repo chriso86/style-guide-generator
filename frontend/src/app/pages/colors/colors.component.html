@@ -1,6 +1,6 @@
-<div class="sgg-component">
+<div fxLayout="row" fxLayoutGap="20px" class="sgg-component">
   <!-- List existing colors -->
-  <sgg-color-swatch *ngFor="let colorSwatch of colorSwatches | async"></sgg-color-swatch>
-
-
+  <div *ngFor="let color of colorSwatches | async" fxFlex="1 1 20%">
+    <sgg-color-swatch [color]="color"></sgg-color-swatch>
+  </div>
 </div>

@@ -1,9 +1,14 @@
-<div fxFlex="1 1 20%" fxLayout="column">
+<div fxLayout="column" class="sgg-color">
   <!-- Color swatch preview -->
-  <div fxFlex="1 1 70%" #colorSwatch></div>
+  <div fxFlex="1 1 70%"
+       class="sgg-color-sample"
+       [style.background]="color.value">
+  </div>
 
   <!-- Color information section -->
-  <div fxFlex="1 1 30%" fxLayout="column" class="sgg-color-info">
+  <div fxFlex="1 1 30%"
+       fxLayout="column"
+       class="sgg-color-info">
     <!-- Color title -->
     <label fxFlex="0 0 auto"> {{color.label}} </label>
 

@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule, MatFormFieldModule, MatSidenavModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 // Project Dependencies
 import { SggComponent } from './sgg.component';
@@ -26,6 +27,7 @@ import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog
     // Angular Modules
     BrowserModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     // Flex Layout Modules
