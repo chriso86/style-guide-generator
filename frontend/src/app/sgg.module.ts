@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatDialogModule, MatFormFieldModule, MatSidenavModule} from '@angular/material';
+import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatSidenavModule, MatSnackBarModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -36,6 +36,9 @@ import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog
     MatFormFieldModule,
     MatSidenavModule,
     MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
     // Routing Modules
     RouterModule.forRoot(ROUTES)
   ],

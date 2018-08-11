@@ -10,7 +10,25 @@
        fxLayout="column"
        class="sgg-color-info">
     <!-- Color title -->
-    <label fxFlex="0 0 auto"> {{color.label}} </label>
+    <label fxFlex="0 0 auto">
+      {{color.label}}
+    </label>
+
+    <!-- Color variable -->
+    <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
+      <!-- Variable -->
+      <span id="colorVariable" fxFlex="1 0 auto">
+        {{color.variable}}
+      </span>
+
+      <!-- Copy variable button -->
+      <button mat-icon-button
+              fxFlex="0 1 auto"
+              fxFlexAlign="end"
+              (click)="selectVariableName($event)">
+        <mat-icon> content_copy </mat-icon>
+      </button>
+    </div>
 
     <!-- Color description and explanation -->
     <p fxFlex="1 1 auto"> {{color.description}} </p>
