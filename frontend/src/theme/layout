@@ -1,5 +1,5 @@
 @import "variables/layout";
 
 .sgg-component {
-  padding: $theme-standard-padding;
+  padding: $theme-main-content-padding;
 }

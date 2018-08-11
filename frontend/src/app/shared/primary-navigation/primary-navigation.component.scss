@@ -2,7 +2,8 @@
 
 .sgg-primary-navigation {
   // Style
-  @extend %standard-panel; // Inherit styles from standard panel
+  background-color: $theme-side-navigation-bg;
+  border-right: $theme-side-navigation-border;
 
   /* Links */
   a {
@@ -25,10 +26,6 @@
 
 
 .sgg-main-content {
-  // Layout
-  height: calc(100% - #{$theme-standard-margin});
-  margin: #{$theme-standard-margin} #{$theme-standard-margin} #{$theme-standard-margin} #{$theme-side-navigation-margin} !important;
-
   // Style
   background-color: $theme-white-default;
   color: $theme-font-primary;
