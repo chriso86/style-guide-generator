@@ -1,0 +1,12 @@
+@import "../../../../theme/theme";
+
+mat-form-field, input {
+  width: 100%;
+}
+
+.sgg-color-input-value {
+  // Layout
+  height: $theme-color-swatch-sample-height;
+  margin-bottom: 10px;
+  border: none !important;
+}

@@ -17,10 +17,10 @@ export class ColorSwatchComponent implements OnInit {
 
   selectVariableName() {
     if (this.color.variable) {
-      const variable = document.getElementById('colorVariable');
       const textArea = document.createElement('textarea');
+      const message = 'Copied ' + this.color.variable;
 
-      textArea.value = variable.textContent;
+      textArea.value = this.color.variable;
       document.body.appendChild(textArea);
 
       textArea.select();
@@ -28,7 +28,7 @@ export class ColorSwatchComponent implements OnInit {
 
       textArea.remove();
 
-      this.snackBar.open('Copied Color Variable');
+      this.snackBar.open(message, 'Got it!', {duration: 3000});
     }
   }
 }

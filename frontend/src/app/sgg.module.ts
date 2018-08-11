@@ -24,6 +24,7 @@ import { ColorsComponent } from './pages/colors/colors.component';
 import { FontsComponent } from './pages/fonts/fonts.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
+import { AddEditColorDialogComponent } from './shared/dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog
     ColorsComponent,
     FontsComponent,
     FooterComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    AddEditColorDialogComponent
   ],
   providers: [],
   bootstrap: [SggComponent]

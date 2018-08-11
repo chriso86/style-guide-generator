@@ -25,9 +25,28 @@
     // Layout
     float: right;
     right: 10px;
-    line-height: 36px;
+    height: 32px;
+    line-height: 32px;
+    padding: 4px 10px;
+    border-radius: 16px;
 
-    // Style
-    @include theme-link();
+    &:hover {
+      background-color: $theme-white-active;
+    }
+
+    a {
+      // Layout
+      display: inline-block;
+
+      span {
+        // Layout
+        padding-left: 10px;
+        vertical-align: top;
+        display: inline-block;
+
+        // Style
+        color: $theme-blue-active !important;
+      }
+    }
   }
 }

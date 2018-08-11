@@ -2,4 +2,8 @@
 
 .sgg-component {
   padding: $theme-main-content-padding;
+
+  &-row-gap {
+    margin-bottom: 20px !important;
+  }
 }

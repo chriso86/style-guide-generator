@@ -1,0 +1,86 @@
+<<h1 matDialogTitle> {{data.title}} </h1>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <!-- Color picker -->
+    <input fxFlex="1 1 70%"
+           class="sgg-color-input-value"
+           [(colorPicker)]="color.value"
+           [style.background]="color.value">
+
+    <div fxFlex="1 1 30%">
+      <!-- Color Hex Value -->
+      <mat-form-field>
+        <input type="text"
+               id="colorHexValue"
+               name="colorHexValue"
+               [formControl]="form.controls['colorHexValue']"
+               matInput
+               [required]="true"
+               [value]="color.value"
+               placeholder="Color Hex Value">
+
+        <!-- Error text -->
+        <mat-error *ngIf="form.controls['colorHexValue'].hasError('required')">
+          Color is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Color label -->
+      <mat-form-field>
+        <input type="text"
+               id="colorLabel"
+               name="colorLabel"
+               [formControl]="form.controls['colorLabel']"
+               matInput
+               [required]="true"
+               [value]="color.label"
+               placeholder="Name">
+
+        <!-- Error text -->
+        <mat-error *ngIf="form.controls['colorLabel'].hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Color description -->
+      <mat-form-field>
+          <textarea id="colorDescription"
+                    name="colorDescription"
+                    [formControl]="form.controls['colorDescription']"
+                    matInput
+                    [value]="color.description"
+                    placeholder="Type a description">
+          </textarea>
+      </mat-form-field>
+
+      <!-- Control buttons -->
+      <div fxLayout="row">
+        <!-- Cancel -->
+        <button fxFlex="1 1 50%"
+                mat-button
+                (click)="cancelColor()">
+          Cancel
+        </button>
+
+        <!-- Confirm -->
+        <button fxFlex="1 1 50%"
+                mat-flat-button
+                type="submit"
+                (click)="confirmColor()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button matDialogClose>
+    Cancel
+  </button>
+
+  <button mat-flat-button>
+    Confirm
+  </button>
+</mat-dialog-actions>

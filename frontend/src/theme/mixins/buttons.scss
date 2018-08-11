@@ -3,7 +3,7 @@
 @mixin theme-link() {
   padding-left: 10px;
   padding-right: 10px;
-  color: $theme-blue-default;
+  color: $theme-blue-default !important;
   cursor: pointer;
 
   a {
@@ -11,12 +11,12 @@
   }
 
   &:visited {
-    color: $theme-blue-default;
+    color: $theme-blue-default !important;
   }
 
   &:hover, &:active, &:active:hover, :focus {
-    background-color: $theme-white-active;
-    color: $theme-blue-active;
+    background-color: $theme-white-active !important;
+    color: $theme-blue-active !important;
 
     a {
       text-decoration: none;
@@ -24,7 +24,7 @@
   }
 
   &[disabled] {
-    color: $theme-blue-disabled;
+    color: $theme-blue-disabled !important;
 
     a {
       text-decoration: none;
