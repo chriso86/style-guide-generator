@@ -1,14 +1,11 @@
 @import "../../../theme/theme";
 
 .sgg-primary-navigation {
-  // Layout
-  width: 20%;
-  min-height: 100vh;
-  padding: 15px;
-
   // Style
-  border-right: 2px solid $theme-header-border;
+  @extend %standard-panel; // Inherit styles from standard panel
+  box-shadow: 3px 2px 10px 0 $theme-box-shadow;
 
+  /* Links */
   a {
     // Layout
     display: block;
@@ -18,8 +15,17 @@
     @include theme-link();
     text-decoration: none;
   }
+
+  /* Active link */
+  &-active {
+    // Style
+    background-color: $theme-white-active;
+    color: $theme-blue-active;
+  }
 }
 
+
 .sgg-main-content {
-  padding: 15px;
+  // Style
+  @extend %standard-panel; // Inherit styles from standard panel
 }

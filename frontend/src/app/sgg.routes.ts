@@ -4,6 +4,7 @@ import {ColorsComponent} from './pages/colors/colors.component';
 import {FontsComponent} from './pages/fonts/fonts.component';
 
 export const ROUTES: Routes = [
+  { path: 'home', component: HomeComponent },
   { path: 'colors', component: ColorsComponent },
   { path: 'fonts', component: FontsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

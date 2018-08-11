@@ -10,7 +10,11 @@
     text-decoration: none;
   }
 
-  &:hover, &:active, &:active:hover, :focus, :visited {
+  &:visited {
+    color: $theme-blue-default;
+  }
+
+  &:hover, &:active, &:active:hover, :focus {
     background-color: $theme-white-active;
     color: $theme-blue-active;
 

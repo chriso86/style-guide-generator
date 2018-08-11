@@ -1,13 +1,19 @@
-<mat-drawer-container autosize>
+<mat-drawer-container fxLayout="row" autosize>
   <!-- Navigation / Router links -->
-  <mat-drawer #drawer class="sgg-primary-navigation" mode="side" [opened]="true">
+  <mat-drawer fxFlex="0 0 20%"
+              #drawer
+              class="sgg-primary-navigation"
+              mode="side"
+              [opened]="true">
     <a routerLink="/home" routerLinkActive="sgg-primary-navigation-active"> Home Sweet Home </a>
-    <a routerLink="/home" routerLinkActive="sgg-primary-navigation-active"> Colors </a>
-    <a routerLink="/home" routerLinkActive="sgg-primary-navigation-active"> Fonts </a>
+    <a routerLink="/colors" routerLinkActive="sgg-primary-navigation-active"> Colors </a>
+    <a routerLink="/fonts" routerLinkActive="sgg-primary-navigation-active"> Fonts </a>
   </mat-drawer>
 
   <!-- Main Content -->
-  <div class="sgg-main-content">
+  <div fxFlex="1 1 auto"
+       fxLayout="column"
+       class="sgg-main-content">
     <router-outlet></router-outlet>
   </div>
 </mat-drawer-container>

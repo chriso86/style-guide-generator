@@ -16,6 +16,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule, MatSidenavModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    // Flex Layout Modules
+    FlexLayoutModule,
     // Material Design Modules
     MatFormFieldModule,
     MatSidenavModule,

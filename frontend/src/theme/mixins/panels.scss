@@ -1,0 +1,11 @@
+@import "../variables/colors";
+
+%standard-panel {
+  // Layout
+  margin: 10px;
+  padding: 15px;
+
+  // Style
+  background-color: $theme-white-default;
+  color: $theme-font-primary;
+}
