@@ -12,11 +12,19 @@
   }
 
   .sgg-color-info {
+    // Name
     label {
       // Style
       font-size: $theme-color-swatch-label-font-size;
     }
 
+    // Variable
+    span {
+      // Style
+      color: $theme-color-swatch-variable-color;
+    }
+
+    // Description
     p {
       // Layout
       margin: 10px 0 0 0 !important;

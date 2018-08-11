@@ -1,11 +1,13 @@
 export class Color {
-  label: string;
-  description: string;
-  value: string;
+  label: string = '';
+  description: string = '';
+  value: string = '';
+  variable: string = '';
 
-  constructor(label: string, description: string, value: string) {
+  constructor(label?: string, description?: string, value?: string, variable?: string) {
     this.label = label;
     this.description = description;
     this.value = value;
+    this.variable = variable;
   }
 }
