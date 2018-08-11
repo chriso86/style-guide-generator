@@ -3,10 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatDialogModule, MatFormFieldModule, MatSidenavModule} from '@angular/material';
+import {MatDialogModule, MatFormFieldModule, MatSidenavModule, MatInputModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+// 3rd Party Dependencies
+import { ColorPickerModule } from 'ngx-color-picker';
 
 // Project Dependencies
 import { SggComponent } from './sgg.component';
@@ -36,6 +39,9 @@ import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog
     MatFormFieldModule,
     MatSidenavModule,
     MatDialogModule,
+    MatInputModule,
+    // 3rd Party
+    ColorPickerModule,
     // Routing Modules
     RouterModule.forRoot(ROUTES)
   ],
