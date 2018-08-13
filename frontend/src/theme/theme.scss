@@ -3,6 +3,9 @@
 @import "variables/fonts";
 @import "variables/layout";
 
+// Helpers
+@import "helpers/mouse";
+
 // Mixins
 @import "mixins/buttons";
 @import "mixins/panels";

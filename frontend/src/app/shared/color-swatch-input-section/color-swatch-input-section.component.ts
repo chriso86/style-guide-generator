@@ -15,7 +15,7 @@ export class ColorSwatchInputSectionComponent implements OnInit {
   }
 
   startAddingColor() {
-
+    console.log("clicked");
   }
 
   confirmAddColor() {
