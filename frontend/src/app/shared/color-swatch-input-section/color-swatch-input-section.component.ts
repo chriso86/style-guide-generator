@@ -29,7 +29,7 @@ export class ColorSwatchInputSectionComponent implements OnInit {
       });
 
       dialog.afterClosed() .subscribe(result => {
-        if(result){
+        if (result) {
           this.success.emit(result);
         }
       });
