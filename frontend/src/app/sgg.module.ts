@@ -1,12 +1,7 @@
 // Angular Dependencies
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatSidenavModule, MatSnackBarModule, MatInputModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 // 3rd Party Dependencies
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -23,29 +18,22 @@ import { HomeComponent } from './pages/home/home.component';
 import { ColorsComponent } from './pages/colors/colors.component';
 import { FontsComponent } from './pages/fonts/fonts.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { ErrorDialogComponent } from './shared/dialogs/error-dialog/error-dialog.component';
-import { AddEditColorDialogComponent } from './shared/dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
+import {DialogsModule} from './shared/dialogs/dialogs.module';
+import {MaterialModule} from './material.module';
+import {SharedModule} from './shared.module';
 
 @NgModule({
   imports: [
     // Angular Modules
-    BrowserModule,
-    FormsModule,
-    CommonModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
+    SharedModule,
     // Flex Layout Modules
     FlexLayoutModule,
     // Material Design Modules
-    MatFormFieldModule,
-    MatSidenavModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSnackBarModule,
-    MatInputModule,
+    MaterialModule,
     // 3rd Party
     ColorPickerModule,
+    // Local Modules
+    DialogsModule,
     // Routing Modules
     RouterModule.forRoot(ROUTES)
   ],
@@ -59,11 +47,14 @@ import { AddEditColorDialogComponent } from './shared/dialogs/add-edit-color-dia
     HomeComponent,
     ColorsComponent,
     FontsComponent,
-    FooterComponent,
-    ErrorDialogComponent,
-    AddEditColorDialogComponent
+    FooterComponent
   ],
   providers: [],
+  exports: [
+    SharedModule,
+    MaterialModule,
+    DialogsModule
+  ],
   bootstrap: [SggComponent]
 })
 export class SggModule { }

@@ -17,6 +17,9 @@ export class ColorSwatchInputSectionComponent implements OnInit {
   }
 
   startAddingColor() {
+<<<<<<< HEAD
+    console.log("clicked");
+=======
     this.dialog.open(
       AddEditColorDialogComponent,
       {
@@ -27,6 +30,7 @@ export class ColorSwatchInputSectionComponent implements OnInit {
           cancel: this.cancelAddColor
         }
       });
+>>>>>>> 9bf3623669e003f5fcba2bcfa76fca0144e6e5bb
   }
 
   confirmAddColor() {
