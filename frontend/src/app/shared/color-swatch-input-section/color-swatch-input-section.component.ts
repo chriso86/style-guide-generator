@@ -33,6 +33,5 @@ export class ColorSwatchInputSectionComponent implements OnInit {
           this.success.emit(result);
         }
       });
-      
   }
 }
