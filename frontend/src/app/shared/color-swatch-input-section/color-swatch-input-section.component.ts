@@ -24,7 +24,7 @@ export class ColorSwatchInputSectionComponent implements OnInit {
       {
         data: {
           title: 'Add new color',
-          color: new Color()
+          color: null
         }
       });
 
