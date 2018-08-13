@@ -15,7 +15,7 @@
     </label>
 
     <!-- Color variable -->
-    <div fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
+    <div *ngIf="color.variable" fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="start center">
       <!-- Variable -->
       <span id="colorVariable" fxFlex="1 0 auto">
         {{color.variable}}

@@ -27,21 +27,9 @@ export class AddEditColorDialogComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      colorHexValue: new FormControl('', Validators.required),
+      colorHexValue: new FormControl(''),
       colorLabel: new FormControl('', Validators.required),
       colorDescription: new FormControl('')
     });
-  }
-
-  confirmColor() {
-    this.data.confirm(this.color);
-
-    this.dialogRef.close();
-  }
-
-  cancelColor() {
-    this.data.cancel(this.color);
-
-    this.dialogRef.close();
   }
 }

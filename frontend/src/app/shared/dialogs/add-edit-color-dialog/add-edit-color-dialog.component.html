@@ -9,23 +9,6 @@
            [style.background]="color.value">
 
     <div fxFlex="1 1 30%">
-      <!-- Color Hex Value -->
-      <mat-form-field>
-        <input type="text"
-               id="colorHexValue"
-               name="colorHexValue"
-               [formControl]="form.controls['colorHexValue']"
-               matInput
-               [required]="true"
-               [value]="color?.value"
-               placeholder="Color Hex Value">
-
-        <!-- Error text -->
-        <mat-error *ngIf="form.controls['colorHexValue'].hasError('required')">
-          Color is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-
       <!-- Color label -->
       <mat-form-field>
         <input type="text"
@@ -35,6 +18,7 @@
                matInput
                [required]="true"
                [value]="color?.label"
+               [(ngModel)]="color.label"
                placeholder="Name">
 
         <!-- Error text -->
@@ -48,6 +32,7 @@
           <textarea id="colorDescription"
                     name="colorDescription"
                     [formControl]="form.controls['colorDescription']"
+                    [(ngModel)]="color.description"
                     matInput
                     [value]="color?.description"
                     placeholder="Type a description">
@@ -60,7 +45,7 @@
           <!-- Cancel -->
           <button fxFlex="1 1 50%"
                   mat-button
-                  (click)="cancelColor()">
+                  mat-dialog-close>
             Cancel
           </button>
 
@@ -68,7 +53,7 @@
           <button fxFlex="1 1 50%"
                   mat-flat-button
                   type="submit"
-                  (click)="confirmColor()">
+                  [mat-dialog-close]="color">
             Confirm
           </button>
         </div>

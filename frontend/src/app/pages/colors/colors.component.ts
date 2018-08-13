@@ -13,44 +13,7 @@ export class ColorsComponent implements OnInit {
   colorSwatches: BehaviorSubject<Color[]> = new BehaviorSubject<Color[]>([]);
 
   // Private vars
-  private _colorSwatches: Color[] = [
-    new Color(
-      'Blue',
-      'Used for menu background, link colors, certain borders, and just anything else that your imagination could come up with',
-      '#00adef',
-      '$theme-color-blue'
-    ),
-    new Color(
-      'Red',
-      'Used for signs of danger and when there is imminent destruction upon the UI for any reason related to bad things in general',
-      '#ff0000',
-      '$theme-color-red'
-    ),
-    new Color(
-      'Blue',
-      'Used for menu background, link colors, certain borders, and just anything else that your imagination could come up with',
-      '#00adef',
-      '$theme-color-blue'
-    ),
-    new Color(
-      'Red',
-      'Used for signs of danger and when there is imminent destruction upon the UI for any reason related to bad things in general',
-      '#ff0000',
-      '$theme-color-red'
-    ),
-    new Color(
-      'Blue',
-      'Used for menu background, link colors, certain borders, and just anything else that your imagination could come up with',
-      '#00adef',
-      '$theme-color-blue'
-    ),
-    new Color(
-      'Red',
-      'Used for signs of danger and when there is imminent destruction upon the UI for any reason related to bad things in general',
-      '#ff0000',
-      '$theme-color-red'
-    )
-  ];
+  private _colorSwatches: Color[] = [];
 
   constructor(private dialog: MatDialog) { }
 

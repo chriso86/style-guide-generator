@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Color} from '../../classes/color';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material';
@@ -10,6 +10,8 @@ import {AddEditColorDialogComponent} from '../dialogs/add-edit-color-dialog/add-
   styleUrls: ['./color-swatch-input-section.component.scss']
 })
 export class ColorSwatchInputSectionComponent implements OnInit {
+  @Output() success: EventEmitter<Color> = new EventEmitter<Color>();
+
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -17,23 +19,19 @@ export class ColorSwatchInputSectionComponent implements OnInit {
   }
 
   startAddingColor() {
-    this.dialog.open(
+    const dialog = this.dialog.open(
       AddEditColorDialogComponent,
       {
         data: {
           title: 'Add new color',
-          color: new Color(),
-          confirm: this.confirmAddColor,
-          cancel: this.cancelAddColor
+          color: new Color()
         }
       });
-  }
 
-  confirmAddColor() {
-    console.log('Adding');
-  }
-
-  cancelAddColor() {
-    console.log('cancelling');
+      dialog.afterClosed() .subscribe(result => {
+        if(result){
+          this.success.emit(result);
+        }
+      });
   }
 }
