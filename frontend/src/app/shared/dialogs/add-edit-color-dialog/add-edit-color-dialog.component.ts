@@ -3,12 +3,6 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Color} from '../../../classes/color';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
-interface AddEditData {
-  title: string;
-  confirm: Function;
-  cancel: Function;
-}
-
 @Component({
   selector: 'sgg-add-edit-color-dialog',
   templateUrl: './add-edit-color-dialog.component.html',
@@ -16,10 +10,20 @@ interface AddEditData {
 })
 export class AddEditColorDialogComponent implements OnInit {
   form: FormGroup;
-  color: Color;
+  color: Color = new Color(null, null, '#ff0000');
 
   constructor(public dialogRef: MatDialogRef<AddEditColorDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: AddEditData) { }
+              @Inject(MAT_DIALOG_DATA) public data: {
+                title: string,
+                color: Color,
+                confirm: Function,
+                cancel: Function
+              }) {
+
+    if (this.data.color && this.data.color.value) {
+      Object.assign(this.color, this.data.color);
+    }
+  }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -27,8 +31,6 @@ export class AddEditColorDialogComponent implements OnInit {
       colorLabel: new FormControl('', Validators.required),
       colorDescription: new FormControl('')
     });
-
-    this.color = new Color();
   }
 
   confirmColor() {

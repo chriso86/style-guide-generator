@@ -1,4 +1,4 @@
-<<h1 matDialogTitle> {{data.title}} </h1>
+<h1 matDialogTitle> {{data.title}} </h1>
 
 <mat-dialog-content>
   <form [formGroup]="form">
@@ -17,7 +17,7 @@
                [formControl]="form.controls['colorHexValue']"
                matInput
                [required]="true"
-               [value]="color.value"
+               [value]="color?.value"
                placeholder="Color Hex Value">
 
         <!-- Error text -->
@@ -34,7 +34,7 @@
                [formControl]="form.controls['colorLabel']"
                matInput
                [required]="true"
-               [value]="color.label"
+               [value]="color?.label"
                placeholder="Name">
 
         <!-- Error text -->
@@ -49,38 +49,30 @@
                     name="colorDescription"
                     [formControl]="form.controls['colorDescription']"
                     matInput
-                    [value]="color.description"
+                    [value]="color?.description"
                     placeholder="Type a description">
           </textarea>
       </mat-form-field>
 
       <!-- Control buttons -->
-      <div fxLayout="row">
-        <!-- Cancel -->
-        <button fxFlex="1 1 50%"
-                mat-button
-                (click)="cancelColor()">
-          Cancel
-        </button>
+      <mat-dialog-actions>
+        <div fxLayout="row">
+          <!-- Cancel -->
+          <button fxFlex="1 1 50%"
+                  mat-button
+                  (click)="cancelColor()">
+            Cancel
+          </button>
 
-        <!-- Confirm -->
-        <button fxFlex="1 1 50%"
-                mat-flat-button
-                type="submit"
-                (click)="confirmColor()">
-          Confirm
-        </button>
-      </div>
+          <!-- Confirm -->
+          <button fxFlex="1 1 50%"
+                  mat-flat-button
+                  type="submit"
+                  (click)="confirmColor()">
+            Confirm
+          </button>
+        </div>
+      </mat-dialog-actions>
     </div>
   </form>
 </mat-dialog-content>
-
-<mat-dialog-actions>
-  <button mat-button matDialogClose>
-    Cancel
-  </button>
-
-  <button mat-flat-button>
-    Confirm
-  </button>
-</mat-dialog-actions>
