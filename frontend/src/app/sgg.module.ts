@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
-// 3rd Party Dependencies
-import { ColorPickerModule } from 'ngx-color-picker';
-
 // Project Dependencies
 import { SggComponent } from './sgg.component';
 import { ColorSwatchComponent } from './shared/color-swatch/color-swatch.component';
@@ -30,8 +27,6 @@ import {SharedModule} from './shared.module';
     FlexLayoutModule,
     // Material Design Modules
     MaterialModule,
-    // 3rd Party
-    ColorPickerModule,
     // Local Modules
     DialogsModule,
     // Routing Modules
@@ -48,12 +43,6 @@ import {SharedModule} from './shared.module';
     ColorsComponent,
     FontsComponent,
     FooterComponent
-  ],
-  providers: [],
-  exports: [
-    SharedModule,
-    MaterialModule,
-    DialogsModule
   ],
   bootstrap: [SggComponent]
 })

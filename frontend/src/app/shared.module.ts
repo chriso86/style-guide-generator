@@ -1,8 +1,13 @@
+// Angular Dependencies
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+// 3rd Party Dependencies
+import { ColorPickerModule } from 'ngx-color-picker';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -10,14 +15,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ColorPickerModule,
+    ToastrModule
   ],
   exports: [
     BrowserModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ColorPickerModule,
+    ToastrModule
+  ],
+  providers: [
+    ToastrService
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

@@ -8,12 +8,16 @@ import {SharedModule} from '../../shared.module';
 // 3rd Party Dependencies
 import { ColorPickerModule } from 'ngx-color-picker';
 import {MaterialModule} from '../../material.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {ToastrModule, ToastrService} from 'ngx-toastr';
 
 @NgModule({
   imports: [
     SharedModule,
     ColorPickerModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule,
+    ToastrModule.forRoot()
   ],
   declarations: [
     ErrorDialogComponent,
@@ -26,6 +30,9 @@ import {MaterialModule} from '../../material.module';
   entryComponents: [
     ErrorDialogComponent,
     AddEditColorDialogComponent
+  ],
+  providers: [
+    ToastrService
   ]
 })
 export class DialogsModule { }

@@ -1,34 +1,35 @@
-<h1 matDialogTitle> {{data.title}} </h1>
+<div fxLayout="column">
+  <h1 fxFlex="0 0 auto" matDialogTitle> {{data.title}} </h1>
 
-<mat-dialog-content>
-  <form [formGroup]="form">
-    <!-- Color picker -->
-    <input fxFlex="1 1 70%"
-           class="sgg-color-input-value"
-           [(colorPicker)]="color.value"
-           [style.background]="color.value">
+  <form fxLayout="row" [formGroup]="form">
+    <mat-dialog-content fxLayout="column" fxFlex="1 1 auto">
+      <!-- Color picker -->
+      <input fxFlex="0 0 80px"
+             class="sgg-color-input-value"
+             [(colorPicker)]="color.value"
+             [style.background]="color.value">
 
-    <div fxFlex="1 1 30%">
-      <!-- Color label -->
-      <mat-form-field>
-        <input type="text"
-               id="colorLabel"
-               name="colorLabel"
-               [formControl]="form.controls['colorLabel']"
-               matInput
-               [required]="true"
-               [value]="color?.label"
-               [(ngModel)]="color.label"
-               placeholder="Name">
+      <div fxFlex="1 1 auto">
+        <!-- Color label -->
+        <mat-form-field>
+          <input type="text"
+                 id="colorLabel"
+                 name="colorLabel"
+                 [formControl]="form.controls['colorLabel']"
+                 matInput
+                 [required]="true"
+                 [value]="color?.label"
+                 [(ngModel)]="color.label"
+                 placeholder="Name">
 
-        <!-- Error text -->
-        <mat-error *ngIf="form.controls['colorLabel'].hasError('required')">
-          Name is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
+          <!-- Error text -->
+          <mat-error *ngIf="form.controls['colorLabel'].hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
-      <!-- Color description -->
-      <mat-form-field>
+        <!-- Color description -->
+        <mat-form-field>
           <textarea id="colorDescription"
                     name="colorDescription"
                     [formControl]="form.controls['colorDescription']"
@@ -37,27 +38,29 @@
                     [value]="color?.description"
                     placeholder="Type a description">
           </textarea>
-      </mat-form-field>
+        </mat-form-field>
 
-      <!-- Control buttons -->
-      <mat-dialog-actions>
-        <div fxLayout="row">
-          <!-- Cancel -->
-          <button fxFlex="1 1 50%"
-                  mat-button
-                  mat-dialog-close>
-            Cancel
-          </button>
+        <!-- Control buttons -->
+        <mat-dialog-actions>
+          <div fxFlex="1 1 auto" fxLayout="row">
+            <!-- Cancel -->
+            <button fxFlex="1 1 50%"
+                    mat-button
+                    mat-dialog-close>
+              Cancel
+            </button>
 
-          <!-- Confirm -->
-          <button fxFlex="1 1 50%"
-                  mat-flat-button
-                  type="submit"
-                  [mat-dialog-close]="color">
-            Confirm
-          </button>
-        </div>
-      </mat-dialog-actions>
-    </div>
+            <!-- Confirm -->
+            <button fxFlex="1 1 50%"
+                    mat-flat-button
+                    type="submit"
+                    [disabled]="!form.valid"
+                    [mat-dialog-close]="{color: color, form: form}">
+              Confirm
+            </button>
+          </div>
+        </mat-dialog-actions>
+      </div>
+    </mat-dialog-content>
   </form>
-</mat-dialog-content>
+</div>
