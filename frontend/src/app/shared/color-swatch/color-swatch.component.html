@@ -1,8 +1,24 @@
 <div fxFlexFill fxLayout="column" class="sgg-color">
-  <!-- Color swatch preview -->
-  <div fxFlex="1 1 auto"
-       class="sgg-color-sample"
-       [style.background]="color.value">
+  <div fxFlex="1 1 80px" class="sgg-color-block">
+    <!-- Color swatch preview -->
+    <div fxFlexFill
+         class="sgg-color-block-sample"
+         [style.background]="color.value">
+    </div>
+
+    <!-- Edit button -->
+    <button mat-icon-button
+            class="sgg-color-block-edit"
+            (click)="editColor()">
+      <mat-icon> edit </mat-icon>
+    </button>
+
+    <!-- Delete button -->
+    <button mat-icon-button
+            class="sgg-color-block-delete"
+            (click)="deleteColor()">
+      <mat-icon> delete </mat-icon>
+    </button>
   </div>
 
   <!-- Color information section -->

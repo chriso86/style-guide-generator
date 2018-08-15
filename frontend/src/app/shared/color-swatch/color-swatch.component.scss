@@ -6,15 +6,45 @@
   border: 1px solid $theme-color-swatch-border-color;
   margin-bottom: 20px;
 
-  .sgg-color-sample {
-    // Layout
-    height: $theme-color-swatch-sample-height;
-    margin-bottom: 10px;
+  &:hover {
+    .sgg-color-block {
+      button {
+        display: inline-block;
+      }
+    }
+  }
+
+  .sgg-color-block {
+    position: relative;
+
+    &-sample {
+      // Layout
+      height: $theme-color-swatch-sample-height;
+      margin-bottom: 10px;
+    }
+
+    button {
+      position: absolute;
+      top: 5px;
+      display: none;
+    }
+
+    &-edit {
+      right: 45px;
+    }
+
+    &-delete {
+      right: 5px;
+      color: $theme-color-delete;
+    }
   }
 
   .sgg-color-info {
     // Name
     label {
+      // Layout
+      padding: 5px 0;
+
       // Style
       font-size: $theme-color-swatch-label-font-size;
     }

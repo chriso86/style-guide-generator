@@ -83,3 +83,10 @@ html, body {
 mat-icon {
   font-family: 'Material Icons' !important;
 }
+
+button[mat-icon-button] {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: $theme-white-default;
+}

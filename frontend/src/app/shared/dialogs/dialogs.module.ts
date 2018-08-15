@@ -10,6 +10,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import {MaterialModule} from '../../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ToastrModule, ToastrService} from 'ngx-toastr';
+import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 
 @NgModule({
   imports: [
@@ -21,15 +22,18 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
   ],
   declarations: [
     ErrorDialogComponent,
-    AddEditColorDialogComponent
+    AddEditColorDialogComponent,
+    YesNoDialogComponent
   ],
   exports: [
     ErrorDialogComponent,
-    AddEditColorDialogComponent
+    AddEditColorDialogComponent,
+    YesNoDialogComponent
   ],
   entryComponents: [
     ErrorDialogComponent,
-    AddEditColorDialogComponent
+    AddEditColorDialogComponent,
+    YesNoDialogComponent
   ],
   providers: [
     ToastrService
