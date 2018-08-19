@@ -1,13 +1,16 @@
 <div fxLayout="row wrap" fxLayoutGap="20px" class="sgg-component">
   <!-- List existing colors -->
   <div *ngFor="let color of colorSwatches | async" fxFlex="1 1 20%" class="sgg-component-row-gap">
-    <sgg-color-swatch [color]="color"></sgg-color-swatch>
+    <sgg-color-swatch [color]="color"
+                      (edit)="editColor($event)"
+                      (delete)="deleteColor($event)">
+    </sgg-color-swatch>
   </div>
 
   <!-- Add new color -->
-  <div fxFlex="1 1 20%" class="sgg-component-row-gap">
-    <sgg-color-swatch-input-section (success)="addColor($event)">
-      
+  <div fxFlex="1 1 20%" fxLayout="column" class="sgg-component-row-gap">
+    <sgg-color-swatch-input-section (success)="addColor($event)"
+                                    fxFlex="0 0 162px">
     </sgg-color-swatch-input-section>
   </div>
 </div>

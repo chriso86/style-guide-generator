@@ -1,0 +1,45 @@
+src
+|- scripts
+|----- vendors
+|
+|- styles
+	|- 1-variables
+	|----- _1-variables.scss (index)
+	|----- _colors.scss
+	|----- _fonts.scss
+	|----- _icons.scss
+	|
+	|- 2-helpers
+	|----- _2-helpers.scss (index)
+	|----- _mixins.scss
+	|----- _functions.scss
+	|
+	|- 3-plugins
+	|----- _3-plugins.scss (index)
+	|----- _bootstrap.scss or any other third party plugin style-specific rules or files
+	|
+	|- 4-base
+	|----- _4-base.scss (index)
+	|----- _global.scss (Any global styles - Out-of-the-box as well as custom)
+	|----- _reset.scss (CSS reset - http://meyerweb.com/eric/tools/css/reset/ - Public domain license - Make sure to display license in file)
+	|----- _typography.scss (Font and icon rules - Vertical rhythm generator - Very important - Consider applying vertical rhythm using Golden ratio - also use base values and use em to scale)
+	|
+	|- 5-layout
+	|----- _5-layout.scss (index)
+	|----- _footer.scss
+	|----- _navigation.scss
+	|----- _siteHeader.scss
+	|----- _siteMainContent.scss
+	|
+	|- 6-modules (More relevant to components that become more pattern-library based)
+	|----- _6-modules.scss (index)
+	|----- _banner.scss
+	|----- _twoColumn.scss
+	|----- _video.scss
+	|----- Any self contained set of rules that is not considered global and not considered layout
+	|
+	|- _config.scss (Contains all mixins used to setup design - used to quickly change styles manually)
+	|- main.scss
+	
+TODO: Check out "Bourbon" and "Neat" plugins
+Note: We will use BEM (Block Element Modifier) methodology

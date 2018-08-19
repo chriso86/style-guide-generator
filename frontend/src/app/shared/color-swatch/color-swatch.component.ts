@@ -1,19 +1,24 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Color} from '../../classes/color';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar, MatDialog} from '@angular/material';
+import { AddEditColorDialogComponent } from '../dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
+import { YesNoDialogComponent } from '../dialogs/yes-no-dialog/yes-no-dialog.component';
+import { ToastrService } from '../../../../node_modules/ngx-toastr';
 
 @Component({
   selector: 'sgg-color-swatch',
   templateUrl: './color-swatch.component.html',
   styleUrls: ['./color-swatch.component.scss']
 })
-export class ColorSwatchComponent implements OnInit {
+export class ColorSwatchComponent {
   @Input() color: Color;
 
-  constructor(private snackBar: MatSnackBar) { }
+  @Output() delete: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() edit: EventEmitter<Color> = new EventEmitter<Color>();
 
-  ngOnInit() {
-  }
+  constructor(private snackBar: MatSnackBar, 
+              private dialog: MatDialog,
+              private toastr: ToastrService) { }
 
   selectVariableName() {
     if (this.color.variable) {
@@ -30,5 +35,45 @@ export class ColorSwatchComponent implements OnInit {
 
       this.snackBar.open(message, 'Got it!', {duration: 3000});
     }
+  }
+
+  editColor() {
+    const dialog = this.dialog.open(
+      AddEditColorDialogComponent, 
+      {
+        data: {
+          title: 'Edit color', 
+          color: this.color
+        }
+      });
+
+    dialog.afterClosed().subscribe(result => {
+      if (result.color) {
+        this.edit.emit(result.color);
+
+        this.toastr.success('Updated color');
+      }
+    })
+  }
+
+  deleteColor() {
+    const message = 'Are you sure you would like to delete this color?\n\n' + this.color.label;
+
+    const dialog = this.dialog.open(
+      YesNoDialogComponent,
+      {
+        data: {
+          title: 'Delete color?',
+          message: message
+        }
+      });
+
+    dialog.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete.emit(this.color);
+
+        this.toastr.success('Deleted color');
+      }
+    });
   }
 }

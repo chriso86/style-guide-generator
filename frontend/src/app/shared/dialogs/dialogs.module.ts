@@ -9,8 +9,8 @@ import {SharedModule} from '../../shared.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import {MaterialModule} from '../../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { FontTypeInputSectionComponent } from '../font-type-input-section/font-type-input-section.component';
 import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-edit-font-type-dialog.component';
+import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,14 +23,19 @@ import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent
+    YesNoDialogComponent
   ],
   exports: [
     ErrorDialogComponent,
-    AddEditColorDialogComponent
+    AddEditColorDialogComponent,
+    AddEditFontTypeDialogComponent,
+    YesNoDialogComponent
   ],
   entryComponents: [
     ErrorDialogComponent,
-    AddEditColorDialogComponent
+    AddEditColorDialogComponent,
+    AddEditFontTypeDialogComponent,
+    YesNoDialogComponent
   ]
 })
 export class DialogsModule { }
