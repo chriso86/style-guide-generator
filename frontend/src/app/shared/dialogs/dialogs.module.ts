@@ -22,7 +22,7 @@ import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
   declarations: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
-    AddEditFontTypeDialogComponent
+    AddEditFontTypeDialogComponent,
     YesNoDialogComponent
   ],
   exports: [
