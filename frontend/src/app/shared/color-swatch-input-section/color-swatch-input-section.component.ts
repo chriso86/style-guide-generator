@@ -14,8 +14,7 @@ export class ColorSwatchInputSectionComponent {
   @Output() success: EventEmitter<Color> = new EventEmitter<Color>();
 
   constructor(private dialog: MatDialog,
-              private toastrService: ToastrService) {
-  }
+              private toastrService: ToastrService) { }
 
   startAddingColor() {
     const dialog = this.dialog.open(

@@ -9,19 +9,20 @@ import {SharedModule} from '../../shared.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import {MaterialModule} from '../../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
+import { FontTypeInputSectionComponent } from '../font-type-input-section/font-type-input-section.component';
+import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-edit-font-type-dialog.component';
 
 @NgModule({
   imports: [
     SharedModule,
     ColorPickerModule,
     MaterialModule,
-    FlexLayoutModule,
-    ToastrModule.forRoot()
+    FlexLayoutModule
   ],
   declarations: [
     ErrorDialogComponent,
-    AddEditColorDialogComponent
+    AddEditColorDialogComponent,
+    AddEditFontTypeDialogComponent
   ],
   exports: [
     ErrorDialogComponent,
@@ -30,9 +31,6 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
   entryComponents: [
     ErrorDialogComponent,
     AddEditColorDialogComponent
-  ],
-  providers: [
-    ToastrService
   ]
 })
 export class DialogsModule { }

@@ -1,0 +1,19 @@
+@import "../../../theme/theme";
+
+a {
+  // Layout
+  padding: $theme-color-swatch-padding;
+  border: 4px dashed $theme-color-swatch-border-color;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  @include disable-user-select();
+
+  & > * {
+    width: 72px;
+    height: 72px;
+    font-size: 72px !important;
+    line-height: 72px !important;
+    color: $theme-color-swatch-variable-color;
+  }
+}
