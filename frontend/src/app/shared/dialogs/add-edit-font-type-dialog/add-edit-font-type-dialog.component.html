@@ -1,3 +1,76 @@
-<p>
-  add-edit-font-type-dialog works!
-</p>
+<div fxLayout="column">
+  <h1 fxFlex="0 0 auto" matDialogTitle> {{data.title}} </h1>
+
+  <form fxLayout="row" [formGroup]="form">
+    <mat-dialog-content fxLayout="column" fxFlex="1 1 auto">
+      <!-- Font label -->
+      <mat-form-field>
+        <input type="text"
+               id="fontLabel"
+               name="fontLabel"
+               [formControl]="form.controls['fontLabel']"
+               matInput
+               [required]="true"
+               [value]="font?.label"
+               [(ngModel)]="font.label"
+               placeholder="Name">
+
+        <!-- Error text -->
+        <mat-error *ngIf="form.controls['fontLabel'].hasError('required')">
+          Label is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Font name -->
+      <mat-form-field>
+        <input type="text"
+               id="fontName"
+               name="fontName"
+               [formControl]="form.controls['fontName']"
+               matInput
+               [required]="true"
+               [value]="font?.name"
+               [(ngModel)]="font.name"
+               placeholder="Name">
+
+        <!-- Error text -->
+        <mat-error *ngIf="form.controls['fontName'].hasError('required')">
+          Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Font description -->
+      <mat-form-field>
+        <textarea id="fontDescription"
+                  name="fontDescription"
+                  [formControl]="form.controls['fontDescription']"
+                  [(ngModel)]="font.description"
+                  matInput
+                  [value]="font?.description"
+                  placeholder="Type a description">
+        </textarea>
+      </mat-form-field>
+
+      <!-- Control buttons -->
+      <mat-dialog-actions>
+        <div fxFlex="1 1 auto" fxLayout="row">
+          <!-- Cancel -->
+          <button fxFlex="1 1 50%"
+                  mat-button
+                  mat-dialog-close>
+            Cancel
+          </button>
+
+          <!-- Confirm -->
+          <button fxFlex="1 1 50%"
+                  mat-flat-button
+                  type="submit"
+                  [disabled]="!form.valid"
+                  [mat-dialog-close]="{color: color, form: form}">
+            Confirm
+          </button>
+        </div>
+      </mat-dialog-actions>
+    </mat-dialog-content>
+  </form>
+</div>

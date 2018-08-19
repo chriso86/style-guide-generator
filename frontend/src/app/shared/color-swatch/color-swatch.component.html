@@ -4,10 +4,13 @@
     <div fxFlexFill
          class="sgg-color-block-sample"
          [style.background]="color.value">
+      <span> {{color.value}} </span>
     </div>
 
     <!-- Edit button -->
     <button mat-icon-button
+            matTooltip="Edit color"
+            matTooltipPosition="below"
             class="sgg-color-block-edit"
             (click)="editColor()">
       <mat-icon> edit </mat-icon>
@@ -15,6 +18,8 @@
 
     <!-- Delete button -->
     <button mat-icon-button
+            matTooltip="Delete color"
+            matTooltipPosition="below"
             class="sgg-color-block-delete"
             (click)="deleteColor()">
       <mat-icon> delete </mat-icon>
@@ -41,6 +46,8 @@
       <button mat-icon-button
               fxFlex="0 1 auto"
               fxFlexAlign="end"
+              matTooltip="Copy color variable"
+              matTooltipPosition="above"
               (click)="selectVariableName($event)">
         <mat-icon> content_copy </mat-icon>
       </button>

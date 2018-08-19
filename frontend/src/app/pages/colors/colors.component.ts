@@ -24,7 +24,12 @@ export class ColorsComponent implements OnInit {
     });
 
     this._colorSwatches.push(
-      new Color('Steel Blue', 'Menu item primary font, primary action button background, action button icons', '#4682b4', '$theme-color-steelblue')
+      new Color(
+        'Steel Blue',
+        'Menu item primary font, primary action button background, action button icons',
+        '#4682b4',
+        '$theme-color-steelblue'
+      )
     );
 
     this.colorSwatches.next(this._colorSwatches);

@@ -1,15 +1,42 @@
-<div class="sgg-font-type">
+<div fxFlexFill fxLayout="column" class="sgg-font">
   <!-- Font name -->
-  <div> {{font.label}} </div>
+  <div class="sgg-font-label"> {{font.label}} </div>
+
+  <!-- Download button -->
+  <button mat-icon-button
+          matTooltip="Download font files"
+          matTooltipPosition="below"
+          class="sgg-font-download"
+          (click)="downloadFont()">
+    <mat-icon> cloud_download </mat-icon>
+  </button>
+
+  <!-- Edit button -->
+  <button mat-icon-button
+          matTooltip="Edit font"
+          matTooltipPosition="below"
+          class="sgg-font-edit"
+          (click)="editFont()">
+    <mat-icon> edit </mat-icon>
+  </button>
+
+  <!-- Delete button -->
+  <button mat-icon-button
+          matTooltip="Delete font"
+          matTooltipPosition="below"
+          class="sgg-font-delete"
+          (click)="deleteFont()">
+    <mat-icon> delete </mat-icon>
+  </button>
 
   <!-- Font preview -->
-  <div class="sgg-font-preview" [style.font]="font.name">
+  <div class="sgg-font-preview" [style.font]="font.name" [style.fontSize]="font.fontSize">
     <!-- Letter characters -->
-    <div class="sgg-font-preview-letters"> ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz </div>
+    <div> ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz </div>
     <!-- Number characters -->
-    <div class="sgg-font-preview-numbers"> 0123456789 </div>
+    <div> 0123456789 </div>
     <!-- Special characters -->
-    <div class="sgg-font-preview-sp-chars">
+    <div>
       &#46; <!-- . -->
       &#44; <!-- , -->
       &#58; <!-- : -->
@@ -43,8 +70,32 @@
       &#96; <!-- ` -->
       &#126; <!-- ~ -->
     </div>
+
+    <div class="sgg-font-preview-controls">
+      <div class="sgg-font-preview-controls-font-size">
+        {{font.fontSize}}
+      </div>
+
+      <!-- Increase font-size button -->
+      <button mat-icon-button
+              class="sgg-font-preview-controls-up"
+              matTooltip="Increase font size"
+              matTooltipPosition="left"
+              (click)="shiftFontSize(font, fontSizeStep)">
+        <mat-icon> keyboard_arrow_up </mat-icon>
+      </button>
+
+      <!-- Decrease font-size button -->
+      <button mat-icon-button
+              matTooltip="Decrease font size"
+              matTooltipPosition="left"
+              class="sgg-font-preview-controls-down"
+              (click)="shiftFontSize(font, fontSizeStep * -1)">
+        <mat-icon> keyboard_arrow_down </mat-icon>
+      </button>
+    </div>
   </div>
 
   <!-- Font description and explanation -->
-  <p> {{font.description}} </p>
+  <p fxFlex="1 1 auto"> {{font.description}} </p>
 </div>

@@ -21,6 +21,13 @@
       // Layout
       height: $theme-color-swatch-sample-height;
       margin-bottom: 10px;
+      text-align: center;
+      line-height: $theme-color-swatch-sample-height;
+
+      span {
+        padding: 5px;
+        background-color: $theme-body-bg;
+      }
     }
 
     button {
