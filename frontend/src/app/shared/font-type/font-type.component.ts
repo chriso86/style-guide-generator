@@ -31,7 +31,7 @@ export class FontTypeComponent {
       {
         data: {
           title: 'Edit font',
-          color: this.font
+          font: this.font
         }
       });
 
