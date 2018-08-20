@@ -14,10 +14,12 @@ import { ROUTES } from './sgg.routes';
 import { HomeComponent } from './pages/home/home.component';
 import { ColorsComponent } from './pages/colors/colors.component';
 import { FontsComponent } from './pages/fonts/fonts.component';
+import { SpacingComponent } from './pages/spacing/spacing.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import {DialogsModule} from './shared/dialogs/dialogs.module';
 import {MaterialModule} from './material.module';
 import {SharedModule} from './shared.module';
+
 
 @NgModule({
   imports: [
@@ -42,6 +44,7 @@ import {SharedModule} from './shared.module';
     HomeComponent,
     ColorsComponent,
     FontsComponent,
+    SpacingComponent,
     FooterComponent
   ],
   bootstrap: [SggComponent]
