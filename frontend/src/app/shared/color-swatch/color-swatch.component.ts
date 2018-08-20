@@ -3,7 +3,7 @@ import {Color} from '../../classes/color';
 import {MatSnackBar, MatDialog} from '@angular/material';
 import { AddEditColorDialogComponent } from '../dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
 import { YesNoDialogComponent } from '../dialogs/yes-no-dialog/yes-no-dialog.component';
-import { ToastrService } from '../../../../node_modules/ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'sgg-color-swatch',
@@ -16,7 +16,7 @@ export class ColorSwatchComponent {
   @Output() delete: EventEmitter<Color> = new EventEmitter<Color>();
   @Output() edit: EventEmitter<Color> = new EventEmitter<Color>();
 
-  constructor(private snackBar: MatSnackBar, 
+  constructor(private snackBar: MatSnackBar,
               private dialog: MatDialog,
               private toastr: ToastrService) { }
 
@@ -39,10 +39,10 @@ export class ColorSwatchComponent {
 
   editColor() {
     const dialog = this.dialog.open(
-      AddEditColorDialogComponent, 
+      AddEditColorDialogComponent,
       {
         data: {
-          title: 'Edit color', 
+          title: 'Edit color',
           color: this.color
         }
       });
@@ -53,7 +53,7 @@ export class ColorSwatchComponent {
 
         this.toastr.success('Updated color');
       }
-    })
+    });
   }
 
   deleteColor() {

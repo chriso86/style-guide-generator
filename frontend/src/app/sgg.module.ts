@@ -19,6 +19,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {DialogsModule} from './shared/dialogs/dialogs.module';
 import {MaterialModule} from './material.module';
 import {SharedModule} from './shared.module';
+import {FontTypeInputSectionComponent} from './shared/font-type-input-section/font-type-input-section.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {SharedModule} from './shared.module';
     ColorsComponent,
     FontsComponent,
     SpacingComponent,
-    FooterComponent
+    FooterComponent,
+    FontTypeInputSectionComponent
   ],
   bootstrap: [SggComponent]
 })

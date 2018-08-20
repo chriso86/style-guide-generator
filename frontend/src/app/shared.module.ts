@@ -17,7 +17,7 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ColorPickerModule,
-    ToastrModule
+    ToastrModule.forRoot()
   ],
   exports: [
     BrowserModule,

@@ -9,7 +9,7 @@ import {SharedModule} from '../../shared.module';
 import { ColorPickerModule } from 'ngx-color-picker';
 import {MaterialModule} from '../../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
+import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-edit-font-type-dialog.component';
 import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 
 @NgModule({
@@ -17,26 +17,25 @@ import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
     SharedModule,
     ColorPickerModule,
     MaterialModule,
-    FlexLayoutModule,
-    ToastrModule.forRoot()
+    FlexLayoutModule
   ],
   declarations: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
+    AddEditFontTypeDialogComponent,
     YesNoDialogComponent
   ],
   exports: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
+    AddEditFontTypeDialogComponent,
     YesNoDialogComponent
   ],
   entryComponents: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
+    AddEditFontTypeDialogComponent,
     YesNoDialogComponent
-  ],
-  providers: [
-    ToastrService
   ]
 })
 export class DialogsModule { }

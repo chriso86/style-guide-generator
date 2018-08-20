@@ -35,6 +35,9 @@ html, body {
   // #{$var} is string interpolation
   height: calc(100vh - #{$theme-header-height} - #{$theme-footer-height});
 }
+.mat-dialog-container {
+  min-width: 400px; // TODO: Should be responsive
+}
 
 
 /* Global buttons */

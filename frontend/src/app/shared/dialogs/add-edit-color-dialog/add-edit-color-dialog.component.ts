@@ -10,14 +10,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class AddEditColorDialogComponent implements OnInit {
   form: FormGroup;
-  color: Color = new Color(null, null, '#ff0000');
+  color: Color = new Color('', '', '#ff0000');
 
   constructor(public dialogRef: MatDialogRef<AddEditColorDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: {
                 title: string,
-                color: Color,
-                confirm: Function,
-                cancel: Function
+                color: Color
               }) {
 
     if (this.data.color && this.data.color.value) {
