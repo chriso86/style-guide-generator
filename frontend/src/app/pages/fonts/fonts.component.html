@@ -1,6 +1,6 @@
 <div fxLayout="row wrap" class="sgg-component">
   <!-- List existing fonts -->
-  <div *ngFor="let font of fonts | async" fxFlex="1 1 100%" class="sgg-component-row-gap">
+  <div *ngFor="let font of fonts | async" fxFlex="1 1 100%">
     <sgg-font-type [font]="font"
                    (edit)="editFont($event)"
                    (delete)="deleteFont($event)">
@@ -8,7 +8,7 @@
   </div>
 
   <!-- Add new font -->
-  <div fxFlex="1 1 100%" class="sgg-component-row-gap">
+  <div fxFlex="1 1 100%">
     <sgg-font-type-input-section (success)="addFont($event)">
     </sgg-font-type-input-section>
   </div>

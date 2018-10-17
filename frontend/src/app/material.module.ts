@@ -6,7 +6,9 @@ import {
   MatIconModule,
   MatInputModule,
   MatSidenavModule,
-  MatSnackBarModule, MatTooltipModule
+  MatSnackBarModule,
+  MatTooltipModule,
+  MatButtonToggleModule,
 } from '@angular/material';
 
 @NgModule({
@@ -18,7 +20,8 @@ import {
     MatIconModule,
     MatSnackBarModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule
   ],
   exports: [
     MatFormFieldModule,
@@ -28,7 +31,8 @@ import {
     MatIconModule,
     MatSnackBarModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonToggleModule
   ],
   providers: []
 })

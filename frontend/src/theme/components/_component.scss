@@ -1,0 +1,15 @@
+@import "../variables/index";
+
+.sgg-component {
+  padding: $theme-color-swatch-padding;
+}
+
+.sgg-page-header {
+  background-color: $theme-page-header;
+
+  h3 {
+    padding-left: 10px;
+    margin: 0 !important;
+    line-height: 2.5em;
+  }
+}

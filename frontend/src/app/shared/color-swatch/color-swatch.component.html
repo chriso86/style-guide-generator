@@ -7,6 +7,15 @@
       <span> {{color.value}} </span>
     </div>
 
+    <!-- More button -->
+    <button mat-icon-button
+            matTooltip="More actions"
+            matTooltipPosition="below"
+            class="sgg-color-block-more"
+            (click)="editColor()">
+      <mat-icon> more_vert </mat-icon>
+    </button>
+
     <!-- Edit button -->
     <button mat-icon-button
             matTooltip="Edit color"

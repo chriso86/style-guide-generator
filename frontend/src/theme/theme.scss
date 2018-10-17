@@ -1,17 +1,14 @@
 // Variables
-@import "variables/colors";
-@import "variables/fonts";
-@import "variables/layout";
+@import "variables/index";
 
 // Helpers
-@import "helpers/mouse";
+@import "helpers/index";
 
 // Mixins
-@import "mixins/buttons";
-@import "mixins/panels";
-
-// Styles
-@import "layout";
+@import "mixins/index";
 
 // Material Design CSS reset
 @import "material_design/index";
+
+// Components
+@import "components/index";
