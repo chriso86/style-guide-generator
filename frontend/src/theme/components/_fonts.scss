@@ -1,0 +1,84 @@
+@import "../variables/index";
+
+.sgg-fonts {
+  padding: $theme-font-type-padding;
+  border: 1px solid $theme-font-types-border-color;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:hover {
+    button {
+      display: inline-block;
+    }
+  }
+
+  > button {
+    position: absolute;
+    top: 5px;
+    display: none;
+  }
+
+  > p {
+    // Layout
+    margin: 10px 0 0 0 !important;
+    padding: $theme-font-type-padding;
+    overflow-wrap: break-word;
+
+    // Style
+    background-color: $theme-font-types-description-bg;
+  }
+
+  &__label {
+    padding: 5px 0;
+
+    font-size: $theme-font-type-label-font-size;
+  }
+
+  &__edit {
+    right: 45px;
+  }
+
+  &__delete {
+    right: 5px;
+    color: $theme-color-delete;
+  }
+
+  &__download {
+    right: 90px;
+  }
+
+  &__preview {
+    min-height: $theme-font-type-preview-min-height;
+    margin: 10px 0;
+    padding-right: 40px;
+    position: relative;
+    word-wrap: break-word;
+
+    &-controls {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 40px;
+
+      button {
+        position: absolute;
+        right: 5px;
+      }
+
+      &-font-size {
+        font-size: 16px;
+        line-height: 40px;
+        text-align: center;
+
+        &--up {
+          top: 50px;
+        }
+
+        &--down {
+          top: 100px;
+        }
+      }
+    }
+  }
+}

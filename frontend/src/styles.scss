@@ -1,0 +1,45 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "theme/theme";
+
+/* Global html */
+html {
+  height: 100%;
+}
+
+/* Global body */
+body {
+  min-height: 100%;
+  background-color: $theme-body-bg;
+}
+
+
+/* Global root */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: $theme-standard-font-family;
+  font-size: $theme-standard-font-size;
+  color: $theme-font-primary;
+}
+
+/* Theme hacks */
+.mat-drawer-container {
+  // #{$var} is string interpolation
+  height: calc(100vh - #{$theme-header-height} - #{$theme-footer-height});
+}
+.mat-dialog-container {
+  min-width: 400px; // TODO: Should be responsive
+}
+
+// Global icons
+button[mat-icon-button] {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: $theme-white-default;
+}
+
+// Global inputs
+mat-form-field, input {
+  width: 100%;
+}

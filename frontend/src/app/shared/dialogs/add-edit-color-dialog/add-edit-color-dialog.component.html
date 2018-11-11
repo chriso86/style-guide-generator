@@ -1,0 +1,66 @@
+<div fxLayout="column">
+  <h1 fxFlex="0 0 auto" matDialogTitle> {{data.title}} </h1>
+
+  <form fxLayout="row" [formGroup]="form">
+    <mat-dialog-content fxLayout="column" fxFlex="1 1 auto">
+      <!-- Color picker -->
+      <input fxFlex="0 0 80px"
+             class="sgg-colors__color-picker"
+             [(colorPicker)]="color.value"
+             [style.background]="color.value">
+
+      <div fxFlex="1 1 auto">
+        <!-- Color label -->
+        <mat-form-field>
+          <input type="text"
+                 id="colorLabel"
+                 name="colorLabel"
+                 [formControl]="form.controls['colorLabel']"
+                 matInput
+                 [required]="true"
+                 [value]="color?.label"
+                 [(ngModel)]="color.label"
+                 placeholder="Name">
+
+          <!-- Error text -->
+          <mat-error *ngIf="form.controls['colorLabel'].hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Color description -->
+        <mat-form-field>
+          <textarea id="colorDescription"
+                    name="colorDescription"
+                    [formControl]="form.controls['colorDescription']"
+                    [(ngModel)]="color.description"
+                    matInput
+                    [value]="color?.description"
+                    placeholder="Type a description">
+          </textarea>
+        </mat-form-field>
+
+        <!-- Control buttons -->
+        <mat-dialog-actions>
+          <div fxFlex="1 1 auto" fxLayout="row">
+            <!-- Cancel -->
+            <button fxFlex="1 1 50%"
+                    mat-button
+                    mat-dialog-close>
+              Cancel
+            </button>
+
+            <!-- Confirm -->
+            <button fxFlex="1 1 50%"
+                    mat-flat-button
+                    type="submit"
+                    [disabled]="!form.valid"
+                    [mat-dialog-close]="{color: color, form: form}">
+              Confirm
+            </button>
+          </div>
+        </mat-dialog-actions>
+      </div>
+    </mat-dialog-content>
+  </form>
+</div>

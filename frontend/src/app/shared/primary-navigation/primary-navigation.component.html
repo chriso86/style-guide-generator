@@ -1,0 +1,43 @@
+<mat-drawer-container fxLayout="row" autosize>
+  <!-- Navigation / Router links -->
+  <mat-drawer fxFlex="0 0 20%"
+              #drawer
+              class="sgg-navigation"
+              mode="side"
+              [opened]="true">
+    <!-- Home -->
+    <a routerLink="/home"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-navigation__link--active">
+      Home
+    </a>
+
+    <!-- Colors -->
+    <a routerLink="/colors"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-primary-navigation-active">
+      Colors
+    </a>
+
+    <!-- Fonts -->
+    <a routerLink="/fonts"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-primary-navigation-active">
+      Fonts
+    </a>
+
+    <!-- Spacing -->
+    <a routerLink="/spacing"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-primary-navigation-active">
+      Spacing
+    </a>
+  </mat-drawer>
+
+  <!-- Main Content -->
+  <mat-drawer-content fxFlex="1 1 100%"
+       fxLayout="column"
+       class="sgg-layout-main-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

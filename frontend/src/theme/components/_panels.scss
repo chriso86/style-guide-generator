@@ -1,0 +1,13 @@
+@import "../variables/panels";
+@import "../variables/colors";
+
+%standard-panel {
+  // Layout
+  margin: $theme-standard-margin;
+  padding: $theme-panel-padding;
+  box-shadow: $theme-panel-box-shadow;
+
+  // Style
+  background-color: $theme-white-default;
+  color: $theme-font-primary;
+}
