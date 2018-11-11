@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sgg-top-header',
-  templateUrl: './top-header.component.html',
-  styleUrls: ['./top-header.component.scss']
+  templateUrl: './top-header.component.html'
 })
 export class TopHeaderComponent implements OnInit {
 

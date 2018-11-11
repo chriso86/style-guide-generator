@@ -3,28 +3,20 @@
 
 /* Global html */
 html {
-  // Layout
   height: 100%;
 }
 
-
 /* Global body */
 body {
-  // Layout
   min-height: 100%;
-
-  // Style
   background-color: $theme-body-bg;
 }
 
 
 /* Global root */
 html, body {
-  // Layout
   margin: 0;
   padding: 0;
-
-  // Style
   font-family: $theme-standard-font-family;
   font-size: $theme-standard-font-size;
   color: $theme-font-primary;
@@ -39,15 +31,15 @@ html, body {
   min-width: 400px; // TODO: Should be responsive
 }
 
-
-/* Global buttons */
-.sgg-call-to-action-btn-1 {
-  @include call-to-action-btn-1();
-}
-
+// Global icons
 button[mat-icon-button] {
   width: 30px;
   height: 30px;
   line-height: 30px;
   background-color: $theme-white-default;
+}
+
+// Global inputs
+mat-form-field, input {
+  width: 100%;
 }

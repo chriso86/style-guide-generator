@@ -7,8 +7,7 @@ import {AddEditFontTypeDialogComponent} from '../dialogs/add-edit-font-type-dial
 
 @Component({
   selector: 'sgg-font-type-input-section',
-  templateUrl: './font-type-input-section.component.html',
-  styleUrls: ['./font-type-input-section.component.scss']
+  templateUrl: './font-type-input-section.component.html'
 })
 export class FontTypeInputSectionComponent {
   @Output() success: EventEmitter<Font> = new EventEmitter<Font>();

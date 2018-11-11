@@ -1,36 +1,32 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Color} from '../../classes/color';
 import {BehaviorSubject} from 'rxjs';
-import {ColorGroup} from '../../classes/colorGroup';
-import {ColorHelper} from '../../helpers/colors';
-import {MatButtonToggleGroup} from '@angular/material';
+import {ColorsApiService} from '../../services/api/colors-api.service';
+import {ColorsApiRequest} from '../../classes/requests/colors-api.request';
+import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
+import {ColorSchemeTypes} from '../../enums/color-scheme-types.enum';
+import {TinyColor} from '@ctrl/tinycolor';
 
 @Component({
   selector: 'sgg-colors',
-  templateUrl: './colors.component.html',
-  styleUrls: ['./colors.component.scss']
+  templateUrl: './colors.component.html'
 })
 export class ColorsComponent implements OnInit {
   // Public vars
   colorSwatches: BehaviorSubject<Color[]> = new BehaviorSubject<Color[]>([]);
-  colorGroups: BehaviorSubject<ColorGroup[]> = new BehaviorSubject<ColorGroup[]>([]);
 
   // Private vars
-  private _colorGroups: ColorGroup[] = [];
   private _colorSwatches: Color[] = [];
 
-  constructor() { }
+  constructor(private colorsApiService: ColorsApiService) {
+  }
 
   ngOnInit() {
     // Initialize data set listeners
     this.colorSwatches.next(this._colorSwatches);
-    this.colorGroups.next(this._colorGroups);
 
     this.colorSwatches.subscribe(newColorSwatches => {
       this._colorSwatches = newColorSwatches;
-    });
-    this.colorGroups.subscribe(newColorGroups => {
-      this._colorGroups = newColorGroups;
     });
   }
 
@@ -49,11 +45,7 @@ export class ColorsComponent implements OnInit {
       return;
     }
 
-    if (color.group) {
-      const existingGroup = this._colorGroups.find(group => group.name === color.group.name);
-
-      this.addColorToColorGroup(existingGroup, color);
-    }
+    this.addColorToSwatches(color);
   }
 
   editColor(color: Color): void {
@@ -65,7 +57,7 @@ export class ColorsComponent implements OnInit {
   }
 
   deleteColor(color: Color): void {
-    this.deleteColorFromColorGroup(color.group, color);
+    this.deleteColorFromSwatches(color);
   }
 
   private getColorConflicts(color: Color) {
@@ -84,32 +76,97 @@ export class ColorsComponent implements OnInit {
   }
 
   // Generate color palettes
-  generateTetradicPalette(paletteType: string): void {
+  generateAnalogous(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.analogic
+    );
 
+    this.getAndCreateColors(request);
   }
 
-  generateComplimentary(color) {
+  generateAnalogousComplimentary(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.analogicComplement
+    );
 
+    this.getAndCreateColors(request);
   }
 
-  generateMonochromatic() {
+  generateComplementary(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.complement
+    );
 
+    this.getAndCreateColors(request);
   }
 
-  generateAnalogous() {
+  generateMonochromatic(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.monochrome
+    );
 
+    this.getAndCreateColors(request);
   }
 
-  generateSplitComplimentary() {
+  generateMonochromaticDark(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.monochromeDark
+    );
 
+    this.getAndCreateColors(request);
   }
 
-  generateTriadic() {
+  generateMonochromaticLight(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.monochromeLight
+    );
 
+    this.getAndCreateColors(request);
   }
 
-  generateTetradic() {
+  generateTriadic(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.triad
+    );
 
+    this.getAndCreateColors(request);
+  }
+
+  generateQuadratic(color: Color) {
+    const request = new ColorsApiRequest(
+      color.tinyColor,
+      ColorSchemeTypes.quad
+    );
+
+    this.getAndCreateColors(request);
+  }
+
+  getAndCreateColors(request: ColorsApiRequest) {
+    this.colorsApiService.getColorScheme(request)
+      .subscribe((response: ColorsApiResponse) => {
+        const colors = response.colors
+          .filter(color => !!color)
+          .map(color => {
+            return new Color(
+              color.name.value,
+              color.name.value,
+              color.hex.value,
+              this.generateVariableFromColorName(color.name.value),
+              new TinyColor(color.rgb.value)
+            );
+        });
+
+        colors.forEach((color: Color) => {
+          this.addColorToSwatches(color);
+        });
+      });
   }
 
   // Private functions
@@ -129,64 +186,14 @@ export class ColorsComponent implements OnInit {
     }
 
     this._colorSwatches.splice(index, 1);
-    this.deleteColorFromColorGroup(color.group, color);
 
     this.colorSwatches.next(this._colorSwatches);
   }
 
-  private addColorGroup(group: ColorGroup) {
-    const groupToAdd = ColorHelper.colorGroups.find(g => g.name === group.name);
+  private generateVariableFromColorName(colorName: string): string {
+    const firstLetter = colorName.charAt(0).toLowerCase();
+    const remaining = colorName.substr(1).replace(' ', '');
 
-    this._colorGroups.push(groupToAdd);
-
-    this.colorGroups.next(this._colorGroups);
-
-    return group;
-  }
-
-  private deleteColorGroup(group: ColorGroup) {
-    const index = this._colorGroups.findIndex(colorGroup => colorGroup.name === group.name);
-
-    if (index < 0) {
-      return;
-    }
-
-    this._colorGroups.splice(index, 1);
-
-    this.colorGroups.next(this._colorGroups);
-  }
-
-  private addColorToColorGroup(group: ColorGroup, color: Color) {
-    // First add color group to model if doesn't exist
-    if (!group) {
-      group = this.addColorGroup(color.group);
-    }
-
-    // Then add color to group (group and model)
-    color.group = group; // Update reference on color object to correct object
-    group.addColor(color);
-
-    this.addColorToSwatches(color);
-
-    this.colorGroups.next(this._colorGroups);
-  }
-
-  private deleteColorFromColorGroup(group: ColorGroup, color: Color) {
-    // First remove color from group
-    const index = group.colors.findIndex(c => c.value === color.value);
-
-    if (index < 0) {
-      return;
-    }
-
-    group.colors.splice(index, 1);
-    this.deleteColorFromSwatches(color);
-
-    this.colorGroups.next(this._colorGroups);
-
-    // Then remove group if it has no other colors in it
-    if (!group.colors.length) {
-      this.deleteColorGroup(group);
-    }
+    return firstLetter + remaining;
   }
 }

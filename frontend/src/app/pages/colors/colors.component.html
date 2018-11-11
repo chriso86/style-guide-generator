@@ -1,8 +1,8 @@
 <!-- Filters -->
-<div fxLayout="row" class="sgg-page-header">
+<div fxLayout="row" class="sgg-layout-header">
   <h3> Colors </h3>
 
-  <div fxFlex="1 1 100%" class="filter-controls">
+  <div fxFlex="1 1 100%" class="sgg-layout-header__list-filters">
     <mat-button-toggle-group #viewMode="matButtonToggleGroup" value="grid">
       <mat-button-toggle value="grid">
         <mat-icon>view_comfy</mat-icon>
@@ -15,46 +15,24 @@
   </div>
 </div>
 
-<!-- Color group view mode -->
-<div *ngIf="viewMode.value === 'group'"
-     fxLayout="column"
-     fxLayoutGap="20px"
-     class="sgg-component">
-  <div *ngFor="let group of colorGroups | async" fxFlex="1 1 100%" class="color-group">
-    <h4> {{group.name}} </h4>
-
-    <hr>
-
-    <div fxLayout="row wrap"
-         fxLayoutGap="20px"
-         class="sgg-component">
-      <div *ngFor="let color of group.colors" fxFlex="1 1 20%">
-        <sgg-color-swatch [color]="color"
-                          (edit)="editColor($event)"
-                          (delete)="deleteColor($event)">
-        </sgg-color-swatch>
-      </div>
-
-      <!-- Add new color -->
-      <div fxFlex="1 1 20%">
-        <sgg-color-swatch-input-section (success)="addColor($event)"
-                                        fxFlex="0 0 162px">
-        </sgg-color-swatch-input-section>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- Grid view mode -->
-<div  *ngIf="viewMode.value === 'grid'"
-      fxLayout="row wrap"
-      fxLayoutGap="20px"
-      class="sgg-component">
+<div *ngIf="viewMode.value === 'grid'"
+     fxLayout="row wrap"
+     fxLayoutGap="20px"
+     class="sgg-layout-container">
   <!-- List existing colors -->
   <div *ngFor="let color of colorSwatches | async" fxFlex="1 1 20%">
     <sgg-color-swatch [color]="color"
                       (edit)="editColor($event)"
-                      (delete)="deleteColor($event)">
+                      (delete)="deleteColor($event)"
+                      (generateAnalogous)="generateAnalogous($event)"
+                      (generateAnalogousComplimentary)="generateAnalogousComplimentary($event)"
+                      (generateComplementary)="generateComplementary($event)"
+                      (generateMonochromatic)="generateMonochromatic($event)"
+                      (generateMonochromaticDark)="generateMonochromaticDark($event)"
+                      (generateMonochromaticLight)="generateMonochromaticLight($event)"
+                      (generateTriadic)="generateTriadic($event)"
+                      (generateQuadratic)="generateQuadratic($event)">
     </sgg-color-swatch>
   </div>
 

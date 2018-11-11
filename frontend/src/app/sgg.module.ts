@@ -20,6 +20,9 @@ import {DialogsModule} from './shared/dialogs/dialogs.module';
 import {MaterialModule} from './material.module';
 import {SharedModule} from './shared.module';
 import {FontTypeInputSectionComponent} from './shared/font-type-input-section/font-type-input-section.component';
+import {ColorsApiService} from './services/api/colors-api.service';
+import {BaseApiService} from './services/api/base-api.service';
+import {HttpClient} from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -47,6 +50,10 @@ import {FontTypeInputSectionComponent} from './shared/font-type-input-section/fo
     SpacingComponent,
     FooterComponent,
     FontTypeInputSectionComponent
+  ],
+  providers: [
+    BaseApiService,
+    ColorsApiService
   ],
   bootstrap: [SggComponent]
 })

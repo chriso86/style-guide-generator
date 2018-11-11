@@ -1,24 +1,22 @@
-@import "../../../theme/theme";
+@import "../variables/index";
 
-.sgg-color {
-  // Layout
+.sgg-colors {
   padding: $theme-color-swatch-padding;
   border: 1px solid $theme-color-swatch-border-color;
   margin-bottom: 20px;
 
   &:hover {
-    .sgg-color-block {
+    .sgg-colors__sample {
       button {
         display: inline-block;
       }
     }
   }
 
-  .sgg-color-block {
+  &__sample {
     position: relative;
 
-    &-sample {
-      // Layout
+    &-color {
       height: $theme-color-swatch-sample-height;
       margin-bottom: 10px;
       text-align: center;
@@ -26,7 +24,7 @@
 
       span {
         padding: 5px;
-        background-color: $theme-body-bg;
+        background-color: $theme-white-default;
       }
     }
 
@@ -50,31 +48,28 @@
     }
   }
 
-  .sgg-color-info {
-    // Name
+  &__info {
     label {
-      // Layout
       padding: 5px 0;
-
-      // Style
       font-size: $theme-color-swatch-label-font-size;
     }
 
-    // Variable
     span {
-      // Style
       color: $theme-color-swatch-variable-color;
     }
 
-    // Description
     p {
-      // Layout
       margin: 10px 0 0 0 !important;
       padding: $theme-color-swatch-padding;
       overflow-wrap: break-word;
-
-      // Style
       background-color: $theme-color-swatch-description-bg;
     }
+  }
+
+  &__color-picker {
+    height: $theme-color-swatch-sample-height;
+    margin-bottom: 10px;
+    border: none !important;
+    cursor: pointer;
   }
 }

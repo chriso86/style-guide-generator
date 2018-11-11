@@ -5,8 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'sgg-add-edit-color-dialog',
-  templateUrl: './add-edit-color-dialog.component.html',
-  styleUrls: ['./add-edit-color-dialog.component.scss']
+  templateUrl: './add-edit-color-dialog.component.html'
 })
 export class AddEditColorDialogComponent implements OnInit {
   form: FormGroup;

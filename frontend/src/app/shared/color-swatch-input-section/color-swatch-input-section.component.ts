@@ -5,13 +5,10 @@ import {MatDialog} from '@angular/material';
 import {AddEditColorDialogComponent} from '../dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
 import {ToastrService} from 'ngx-toastr';
 import { TinyColor } from '@ctrl/tinycolor';
-import {ColorGroup} from '../../classes/colorGroup';
-import {ColorHelper} from '../../helpers/colors';
 
 @Component({
   selector: 'sgg-color-swatch-input-section',
-  templateUrl: './color-swatch-input-section.component.html',
-  styleUrls: ['./color-swatch-input-section.component.scss']
+  templateUrl: './color-swatch-input-section.component.html'
 })
 export class ColorSwatchInputSectionComponent {
   @Output() success: EventEmitter<Color> = new EventEmitter<Color>();
@@ -29,20 +26,11 @@ export class ColorSwatchInputSectionComponent {
         }
       });
 
-    dialog.afterClosed().subscribe((result: { color: Color, colorGroup: ColorGroup, form: FormGroup }) => {
+    dialog.afterClosed().subscribe((result: { color: Color, form: FormGroup }) => {
       if (result.color) {
         result.color.tinyColor = new TinyColor(result.color.value);
 
-        const groupFromHex = ColorHelper.getColorGroupFromHex(result.color.value);
-        const groupFromRGB = ColorHelper.getColorGroupFromRGB([
-            result.color.tinyColor.r,
-            result.color.tinyColor.g,
-            result.color.tinyColor.b
-          ]);
-
         console.log(result.color.tinyColor.toName());
-
-        result.color.group = groupFromHex ? groupFromHex : groupFromRGB;
 
         this.success.emit(result.color);
 

@@ -7,14 +7,22 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'sgg-color-swatch',
-  templateUrl: './color-swatch.component.html',
-  styleUrls: ['./color-swatch.component.scss']
+  templateUrl: './color-swatch.component.html'
 })
 export class ColorSwatchComponent {
   @Input() color: Color;
 
   @Output() delete: EventEmitter<Color> = new EventEmitter<Color>();
   @Output() edit: EventEmitter<Color> = new EventEmitter<Color>();
+
+  @Output() generateAnalogous: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateAnalogousComplimentary: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateComplementary: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateMonochromatic: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateMonochromaticDark: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateMonochromaticLight: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateTriadic: EventEmitter<Color> = new EventEmitter<Color>();
+  @Output() generateQuadratic: EventEmitter<Color> = new EventEmitter<Color>();
 
   constructor(private snackBar: MatSnackBar,
               private dialog: MatDialog,

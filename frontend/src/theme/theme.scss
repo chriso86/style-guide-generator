@@ -4,11 +4,11 @@
 // Helpers
 @import "helpers/index";
 
-// Mixins
-@import "mixins/index";
-
 // Material Design CSS reset
 @import "material_design/index";
 
 // Components
 @import "components/index";
+
+// Primary layout
+@import "layout";
