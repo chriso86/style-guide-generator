@@ -1,0 +1,75 @@
+@import "../variables/index";
+
+.sgg-colors {
+  padding: $theme-color-swatch-padding;
+  border: 1px solid $theme-color-swatch-border-color;
+  margin-bottom: 20px;
+
+  &:hover {
+    .sgg-colors__sample {
+      button {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__sample {
+    position: relative;
+
+    &-color {
+      height: $theme-color-swatch-sample-height;
+      margin-bottom: 10px;
+      text-align: center;
+      line-height: $theme-color-swatch-sample-height;
+
+      span {
+        padding: 5px;
+        background-color: $theme-white-default;
+      }
+    }
+
+    button {
+      position: absolute;
+      top: 5px;
+      display: none;
+    }
+
+    &-more {
+      right: 85px;
+    }
+
+    &-edit {
+      right: 45px;
+    }
+
+    &-delete {
+      right: 5px;
+      color: $theme-color-delete;
+    }
+  }
+
+  &__info {
+    label {
+      padding: 5px 0;
+      font-size: $theme-color-swatch-label-font-size;
+    }
+
+    span {
+      color: $theme-color-swatch-variable-color;
+    }
+
+    p {
+      margin: 10px 0 0 0 !important;
+      padding: $theme-color-swatch-padding;
+      overflow-wrap: break-word;
+      background-color: $theme-color-swatch-description-bg;
+    }
+  }
+
+  &__color-picker {
+    height: $theme-color-swatch-sample-height;
+    margin-bottom: 10px;
+    border: none !important;
+    cursor: pointer;
+  }
+}

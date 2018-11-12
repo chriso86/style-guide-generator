@@ -1,0 +1,54 @@
+@import "../variables/index";
+
+.sgg-controls {
+  &__button {
+    &--type-blue {
+      border: none;
+      padding: 10px 15px;
+      background-color: $theme-blue-default;
+      color: $theme-white-default;
+      cursor: pointer;
+
+      a {
+        text-decoration: none;
+      }
+
+      &:hover, &:active, &:active:hover, :focus, :visited {
+        background-color: $theme-blue-active;
+        color: $theme-white-active;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      &[disabled] {
+        background-color: $theme-blue-disabled;
+        color: $theme-white-disabled;
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &--type-add-new {
+      padding: $theme-color-swatch-padding;
+      border: 4px dashed $theme-color-swatch-border-color;
+      border-radius: 20px;
+      text-decoration: none;
+      cursor: pointer;
+      @include disable-user-select();
+      min-height: $theme-controls-button-add-new !important;
+
+
+      & > * {
+        width: 72px !important;
+        height: 72px !important;
+        font-size: 72px !important;
+        line-height: 72px !important;
+        color: $theme-color-swatch-variable-color;
+      }
+    }
+  }
+}
