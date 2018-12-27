@@ -11,6 +11,8 @@ import {MaterialModule} from '../../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-edit-font-type-dialog.component';
 import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
+import { LoginDialogComponentComponent } from './login-dialog-component/login-dialog-component.component';
+import {AuthService} from '../../services/auth.service';
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    LoginDialogComponentComponent
   ],
   exports: [
     ErrorDialogComponent,
@@ -35,7 +38,11 @@ import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    LoginDialogComponentComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class DialogsModule { }

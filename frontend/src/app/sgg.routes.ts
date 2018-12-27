@@ -9,6 +9,6 @@ export const ROUTES: Routes = [
   { path: 'colors', component: ColorsComponent },
   { path: 'fonts', component: FontsComponent },
   { path: 'spacing', component: SpacingComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: HomeComponent }
+  { path: '', redirectTo: '/colors', pathMatch: 'full' },
+  { path: '**', component: ColorsComponent }
 ];

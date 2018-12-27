@@ -6,6 +6,8 @@ import {ColorsApiRequest} from '../../classes/requests/colors-api.request';
 import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
 import {ColorSchemeTypes} from '../../enums/color-scheme-types.enum';
 import {TinyColor} from '@ctrl/tinycolor';
+import {ColorGroup} from '../../classes/colorGroup';
+import {isNullOrUndefined} from 'util';
 
 @Component({
   selector: 'sgg-colors',
@@ -14,6 +16,12 @@ import {TinyColor} from '@ctrl/tinycolor';
 export class ColorsComponent implements OnInit {
   // Public vars
   colorSwatches: BehaviorSubject<Color[]> = new BehaviorSubject<Color[]>([]);
+  groups: ColorGroup[] = [];
+  supportingColorModes: string[] = [
+    ColorSchemeTypes.monochrome,
+    ColorSchemeTypes.monochromeLight,
+    ColorSchemeTypes.monochromeDark
+  ];
 
   // Private vars
   private _colorSwatches: Color[] = [];
@@ -44,6 +52,11 @@ export class ColorsComponent implements OnInit {
 
       return;
     }
+
+    // Set manually added color as a primary color
+    color.isPrimary = true;
+
+    this.addPrimaryColorToGroup(color);
 
     this.addColorToSwatches(color);
   }
@@ -79,7 +92,9 @@ export class ColorsComponent implements OnInit {
   generateAnalogous(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.analogic
+      ColorSchemeTypes.analogic,
+      'json',
+      2
     );
 
     this.getAndCreateColors(request);
@@ -88,7 +103,9 @@ export class ColorsComponent implements OnInit {
   generateAnalogousComplimentary(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.analogicComplement
+      ColorSchemeTypes.analogicComplement,
+      'json',
+      2
     );
 
     this.getAndCreateColors(request);
@@ -97,7 +114,9 @@ export class ColorsComponent implements OnInit {
   generateComplementary(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.complement
+      ColorSchemeTypes.complement,
+      'json',
+      1
     );
 
     this.getAndCreateColors(request);
@@ -106,7 +125,9 @@ export class ColorsComponent implements OnInit {
   generateMonochromatic(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.monochrome
+      ColorSchemeTypes.monochrome,
+      'json',
+      3
     );
 
     this.getAndCreateColors(request);
@@ -115,7 +136,9 @@ export class ColorsComponent implements OnInit {
   generateMonochromaticDark(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.monochromeDark
+      ColorSchemeTypes.monochromeDark,
+      'json',
+      3
     );
 
     this.getAndCreateColors(request);
@@ -124,7 +147,9 @@ export class ColorsComponent implements OnInit {
   generateMonochromaticLight(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.monochromeLight
+      ColorSchemeTypes.monochromeLight,
+      'json',
+      3
     );
 
     this.getAndCreateColors(request);
@@ -133,7 +158,9 @@ export class ColorsComponent implements OnInit {
   generateTriadic(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.triad
+      ColorSchemeTypes.triad,
+      'json',
+      2
     );
 
     this.getAndCreateColors(request);
@@ -142,7 +169,9 @@ export class ColorsComponent implements OnInit {
   generateQuadratic(color: Color) {
     const request = new ColorsApiRequest(
       color.tinyColor,
-      ColorSchemeTypes.quad
+      ColorSchemeTypes.quad,
+      'json',
+      3
     );
 
     this.getAndCreateColors(request);
@@ -151,17 +180,40 @@ export class ColorsComponent implements OnInit {
   getAndCreateColors(request: ColorsApiRequest) {
     this.colorsApiService.getColorScheme(request)
       .subscribe((response: ColorsApiResponse) => {
+        // Cut out extra values returned by API
+        response.colors.length = request.count;
+
         const colors = response.colors
           .filter(color => !!color)
           .map(color => {
-            return new Color(
+            const newColor = new Color(
               color.name.value,
               color.name.value,
               color.hex.value,
               this.generateVariableFromColorName(color.name.value),
               new TinyColor(color.rgb.value)
             );
-        });
+
+            // Find color group that matches the input color object on the request (primary color)
+            if (this.supportingColorModes.indexOf(request.mode) > -1) {
+              const group = this.groups.find((colorGroup: ColorGroup) => {
+                const matchingColorGroup = colorGroup.colorSwatches.find(
+                  (groupColor: Color) => {
+                    return groupColor.value === `#${request.hex}`;
+                  });
+
+                return !isNullOrUndefined(matchingColorGroup);
+              });
+
+              // Add supporting color to matching primary color's group
+              this.addSupportingColorToGroup(group, newColor);
+            } else {
+              // Add new primary color to it's own group
+              this.addPrimaryColorToGroup(newColor);
+            }
+
+            return newColor;
+          });
 
         colors.forEach((color: Color) => {
           this.addColorToSwatches(color);
@@ -195,5 +247,41 @@ export class ColorsComponent implements OnInit {
     const remaining = colorName.substr(1).replace(' ', '');
 
     return firstLetter + remaining;
+  }
+
+  private addPrimaryColorToGroup(color: Color) {
+    const colorGroupLabel = `Primary color: ${color.label} (${color.value}) - Color Group`;
+
+    this.groups.push(
+      new ColorGroup(colorGroupLabel, [color])
+    );
+  }
+
+  private addSupportingColorToGroup(group: ColorGroup, color: Color) {
+    group.colorSwatches.push(color);
+    // TODO: THIS DOESN'T WORK
+    // const colorSwatchesClone = Object.assign([], group.colorSwatches);
+    // const sortedMutatedArray = sortColors(
+    //   colorSwatchesClone.map(colorOnSwatch => {
+    //     return [
+    //       colorOnSwatch.tinyColor.r,
+    //       colorOnSwatch.tinyColor.g,
+    //       colorOnSwatch.tinyColor.b
+    //     ];
+    //   })
+    // );
+    // const sortedColorSwatchArray = [];
+    // sortedMutatedArray.forEach(mutatedColor => {
+    //   const matchingColor = colorSwatchesClone.find(colorSwatch => {
+    //     return colorSwatch.tinyColor.r === mutatedColor[0]
+    //       && colorSwatch.tinyColor.g === mutatedColor[1]
+    //       && colorSwatch.tinyColor.b === mutatedColor[2];
+    //   });
+    //
+    //   sortedColorSwatchArray.push(matchingColor);
+    // });
+    //
+    // group.colorSwatches.length = 0;
+    // Object.assign(group.colorSwatches, sortedColorSwatchArray);
   }
 }

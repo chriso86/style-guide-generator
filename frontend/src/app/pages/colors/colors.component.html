@@ -21,7 +21,11 @@
      fxLayoutGap="20px"
      class="sgg-layout-container">
   <!-- List existing colors -->
-  <div *ngFor="let color of colorSwatches | async" fxFlex="1 1 20%">
+  <div *ngFor="let color of colorSwatches | async"
+       fxFlex="1 1 20%"
+       fxFlex.md="1 1 25%"
+       fxFlex.sm="1 1 50%"
+       fxFlex.xs="1 1 100%">
     <sgg-color-swatch [color]="color"
                       (edit)="editColor($event)"
                       (delete)="deleteColor($event)"
@@ -37,9 +41,59 @@
   </div>
 
   <!-- Add new color -->
-  <div fxFlex="1 1 20%">
+  <div fxFlex="1 1 20%"
+       fxFlex.md="1 1 25%"
+       fxFlex.sm="1 1 50%"
+       fxFlex.xs="1 1 100%">
     <sgg-color-swatch-input-section (success)="addColor($event)"
-                                    fxFlex="0 0 162px">
+                                    fxFlex="1 1 100%">
+    </sgg-color-swatch-input-section>
+  </div>
+</div>
+
+<!-- Group view mode -->
+<div *ngIf="viewMode.value === 'group'"
+     fxLayout="column wrap"
+     fxLayoutGap="20px"
+     class="sgg-layout-container">
+  <!-- List existing color groups -->
+  <div *ngFor="let group of groups"
+       fxLayout="column">
+    <h5> {{group.title}} </h5>
+
+    <div fxLayout="row wrap"
+         fxLayoutGap="20px"
+         class="sgg-layout-container">
+      <!-- List existing colors in group -->
+      <div *ngFor="let color of group.colorSwatches"
+           fxFlex.gt-lg="1 1 20%"
+           fxFlex.md="1 1 25%"
+           fxFlex.sm="1 1 50%"
+           fxFlex.xs="1 1 100%">
+        <sgg-color-swatch [color]="color"
+                          (edit)="editColor($event)"
+                          (delete)="deleteColor($event)"
+                          (generateAnalogous)="generateAnalogous($event)"
+                          (generateAnalogousComplimentary)="generateAnalogousComplimentary($event)"
+                          (generateComplementary)="generateComplementary($event)"
+                          (generateMonochromatic)="generateMonochromatic($event)"
+                          (generateMonochromaticDark)="generateMonochromaticDark($event)"
+                          (generateMonochromaticLight)="generateMonochromaticLight($event)"
+                          (generateTriadic)="generateTriadic($event)"
+                          (generateQuadratic)="generateQuadratic($event)">
+        </sgg-color-swatch>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add new color -->
+  <div fxLayout="row"
+       fxFlex.gt-lg="1 1 20%"
+       fxFlex.md="1 1 25%"
+       fxFlex.sm="1 1 50%"
+       fxFlex.xs="1 1 100%">
+    <sgg-color-swatch-input-section (success)="addColor($event)"
+                                    fxFlex="1 1 100%">
     </sgg-color-swatch-input-section>
   </div>
 </div>

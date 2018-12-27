@@ -23,11 +23,15 @@ import {FontTypeInputSectionComponent} from './shared/font-type-input-section/fo
 import {ColorsApiService} from './services/api/colors-api.service';
 import {BaseApiService} from './services/api/base-api.service';
 import {HttpClient} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     // Angular Modules
     SharedModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     // Flex Layout Modules
     FlexLayoutModule,
     // Material Design Modules
@@ -35,7 +39,7 @@ import {HttpClient} from '@angular/common/http';
     // Local Modules
     DialogsModule,
     // Routing Modules
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {useHash: true})
   ],
   declarations: [
     SggComponent,

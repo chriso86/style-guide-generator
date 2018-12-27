@@ -16,19 +16,15 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     ColorPickerModule,
-    HttpClientModule,
-    ToastrModule.forRoot()
+    HttpClientModule
   ],
   exports: [
     BrowserModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    ColorPickerModule,
-    ToastrModule
+    ColorPickerModule
   ],
   providers: [
     ToastrService

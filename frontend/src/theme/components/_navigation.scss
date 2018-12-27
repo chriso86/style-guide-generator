@@ -1,5 +1,6 @@
 .sgg {
   &-navigation {
+    min-width: 180px !important;
     background-color: $theme-side-navigation-bg;
     border-right: $theme-side-navigation-border;
 
