@@ -3,11 +3,11 @@
 .sgg-layout {
   &-main-header {
     width: 100%;
-    height: 36px;
+    min-height: 58px;
     padding: 10px 0;
     background-color: $theme-header-bg;
     color: $theme-header-font;
-    border-bottom: 2px solid $theme-header-border;
+    border-bottom: 3px solid black;
 
     & > * {
       position: relative;
@@ -16,34 +16,51 @@
     &__logo {
       // Layout
       left: 10px;
-      height: 36px;
+      height: 58px;
+      margin-left: 10px;
     }
 
-    &__contribute {
+    &__link {
       // Layout
+      background-color: $theme-white-default;
       float: right;
-      right: 10px;
       height: 32px;
+      margin: 0 5px;
       line-height: 32px;
-      padding: 4px 10px;
+      padding: 5px;
+      cursor: pointer;
+      border: 3px solid black;
       border-radius: 16px;
+      text-align: center;
 
       &:hover {
         background-color: $theme-white-active;
+
+        span, a {
+          color: black !important;
+        }
+      }
+
+      i {
+        line-height: 32px;
       }
 
       a {
         // Layout
         display: inline-block;
+        color: #333 !important;
+        text-decoration: none !important;
+        user-select: none;
 
         span {
           // Layout
           padding-left: 10px;
           vertical-align: top;
           display: inline-block;
+          user-select: none;
 
           // Style
-          color: $theme-blue-active !important;
+          color: #333 !important;
         }
       }
     }

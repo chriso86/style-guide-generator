@@ -1,10 +1,11 @@
 import {Component, Output, EventEmitter} from '@angular/core';
 import {Color} from '../../classes/color';
 import {FormGroup} from '@angular/forms';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material';
 import {AddEditColorDialogComponent} from '../dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
 import {ToastrService} from 'ngx-toastr';
-import { TinyColor } from '@ctrl/tinycolor';
+import {TinyColor} from '@ctrl/tinycolor';
+import {SggComponent} from '../../sgg.component';
 
 @Component({
   selector: 'sgg-color-swatch-input-section',
@@ -13,18 +14,23 @@ import { TinyColor } from '@ctrl/tinycolor';
 export class ColorSwatchInputSectionComponent {
   @Output() success: EventEmitter<Color> = new EventEmitter<Color>();
 
-  constructor(private dialog: MatDialog,
-              private toastrService: ToastrService) { }
+  constructor(public app: SggComponent,
+              private dialog: MatDialog,
+              private toastrService: ToastrService) {
+  }
 
   startAddingColor() {
-    const dialog = this.dialog.open(
-      AddEditColorDialogComponent,
-      {
-        data: {
-          title: 'Add new color',
-          color: null
-        }
-      });
+    const config = new MatDialogConfig();
+
+    config.viewContainerRef = this.app.vcRef;
+    config.maxWidth = '100%';
+    config.minWidth = '250px';
+    config.data = {
+      title: 'Add new color',
+      color: null
+    };
+
+    const dialog = this.dialog.open(AddEditColorDialogComponent, config);
 
     dialog.afterClosed().subscribe((result: { color: Color, form: FormGroup }) => {
       if (result.color) {

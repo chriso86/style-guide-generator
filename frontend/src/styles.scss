@@ -12,7 +12,6 @@ body {
   background-color: $theme-body-bg;
 }
 
-
 /* Global root */
 html, body {
   margin: 0;
@@ -27,6 +26,7 @@ html, body {
   // #{$var} is string interpolation
   height: calc(100vh - #{$theme-header-height} - #{$theme-footer-height});
 }
+
 .mat-dialog-container {
   min-width: 400px; // TODO: Should be responsive
 }
@@ -42,4 +42,106 @@ button[mat-icon-button] {
 // Global inputs
 mat-form-field, input {
   width: 100%;
+}
+
+.fb__hdng {
+  font-size: 18px !important;
+  line-height: 22px !important;
+  text-align: center !important;
+}
+
+.fb__inpt {
+  input {
+    position: relative;
+    left: 50%;
+    margin-left: -142px;
+    margin-bottom: 12px;
+    font-size: 14px !important;
+    padding: 5px 8px !important;
+    width: 284px !important;
+    border: 1px solid #dddfe2 !important;
+    color: #1d2129 !important;
+    font-family: Helvetica, Arial, sans-serif !important;
+    height: 22px !important;
+    line-height: 16px !important;
+    vertical-align: middle !important;
+    -webkit-appearance: none !important;
+    -webkit-border-radius: 0 !important;
+
+    &:-ms-input-placeholder,
+    &::-webkit-input-placeholder,
+    &:-moz-placeholder,
+    &::-moz-placeholder {
+      color: #666 !important;
+    }
+
+    &:focus, &:active {
+      border-color: #dddfe2 !important;
+
+      &:-ms-input-placeholder,
+      &::-webkit-input-placeholder,
+      &:-moz-placeholder,
+      &::-moz-placeholder {
+        color: #ccc !important;
+      }
+    }
+  }
+}
+
+.fb__btn {
+  display: block !important;
+  left: 50%;
+  margin-left: -142px;
+  margin-bottom: 12px;
+  font-family: Helvetica, Arial, sans-serif !important;
+  font-size: 14px;
+  width: 252px;
+  line-height: 42px;
+  padding: 0 24px;
+  transition: 200ms cubic-bezier(.08,.52,.52,1) background-color, 200ms cubic-bezier(.08,.52,.52,1) box-shadow, 200ms cubic-bezier(.08,.52,.52,1) transform;
+  border: 1px solid;
+  border-radius: 2px;
+  box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  text-shadow: none;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &-s {
+    background-color: #4267b2;
+    border-color: #4267b2;
+    color: white !important
+  }
+
+  &-c {
+    border: none !important;
+  }
+}
+
+.loader {
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  z-index: 121;
+  overflow: hidden;
+
+  img {
+    position: relative;
+    left: 50%;
+    margin-left: -146px;
+    z-index: 120;
+    width: 292px;
+    height: 292px;
+  }
+}
+
+mat-dialog-container {
+  min-width: 250px !important;
 }
