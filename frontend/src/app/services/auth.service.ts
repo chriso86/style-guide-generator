@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
-import {catchError, map} from 'rxjs/operators';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
