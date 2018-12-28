@@ -1,13 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const mysql = require("mysql");
-
-const connection = mysql.createConnection({
-    host: "http://35.242.199.208",
-    user: "lethiux",
-    database: "girder:europe-west3:girder",
-    password : 'Lethiux86()'
-});
 
 router.post('/', function(req, res) {
     const username = req.body.username;
