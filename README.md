@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/{chriso86}/{design-system-generator}.png?branch=master)](https://travis-ci.org/{chriso86}/{design-system-generator})
