@@ -7,6 +7,12 @@ export const StringHelper = {
     }
 
     return !isNullOrUndefined(value) && (typeof value === 'string');
+  },
+  generateVariableFromName(name: string): string {
+    const firstLetter = name.charAt(0).toLowerCase();
+    const remaining = name.substr(1).replace(' ', '');
+
+    return firstLetter + remaining;
   }
 };
 
@@ -27,5 +33,11 @@ export const BooleanHelper = {
     }
 
     return (typeof value === 'boolean') && value && !isNullOrUndefined(value);
+  }
+};
+
+export const ObjectHelper = {
+  hasValue: (value: any) => {
+    return !isNullOrUndefined(value);
   }
 };

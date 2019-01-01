@@ -1,20 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ColorSwatchInputSectionComponent } from './color-swatch-input-section.component';
+import { AddNewItemComponent } from './add-new-item.component';
 
 describe('ColorSwatchInputSectionComponent', () => {
-  let component: ColorSwatchInputSectionComponent;
-  let fixture: ComponentFixture<ColorSwatchInputSectionComponent>;
+  let component: AddNewItemComponent;
+  let fixture: ComponentFixture<AddNewItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColorSwatchInputSectionComponent ]
+      declarations: [ AddNewItemComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ColorSwatchInputSectionComponent);
+    fixture = TestBed.createComponent(AddNewItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

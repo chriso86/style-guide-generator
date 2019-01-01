@@ -7,5 +7,9 @@ export class ColorGroup {
   constructor(title: string, colorSwatches: Color[]) {
     this.title = title || 'No group title assigned';
     this.colorSwatches = colorSwatches || [];
+
+    colorSwatches.forEach(colorSwatch => {
+      colorSwatch.groupName = title;
+    });
   }
 }

@@ -8,6 +8,7 @@ export class Color {
   tinyColor: TinyColor = null;
   isPrimary: boolean = false;
   parentColor: string = '';
+  groupName: string;
 
   constructor(
     label?: string,
