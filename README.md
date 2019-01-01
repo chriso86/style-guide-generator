@@ -1,9 +1,11 @@
 # StyleGuideGenerator
 
 [![Build Status](https://travis-ci.com/chriso86/style-guide-generator.svg?branch=master)](https://travis-ci.com/chriso86/style-guide-generator)
-[![Version](https://img.shields.io/github/tag/expressjs/express.svg)](https://github.com/chriso86/style-guide-generator)
+[![Version](https://img.shields.io/github/tag/chriso86/style-guide-generator.svg?branch=master&label=latest%20version)](https://github.com/chriso86/style-guide-generator/tags)
+[![License](https://img.shields.io/github/license/chriso86/style-guide-generator.svg)](https://github.com/chriso86/style-guide-generator)
+[![Repo Size](https://img.shields.io/github/repo-size/chriso86/style-guide-generator.svg)](https://github.com/chriso86/style-guide-generator)
 
-This 
+Used to document the styling rules and variables used within one or more projects. 
 
 ## Development server
 
