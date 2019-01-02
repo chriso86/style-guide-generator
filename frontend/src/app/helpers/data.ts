@@ -1,4 +1,5 @@
 import {isNullOrUndefined} from 'util';
+import {MatTooltipDefaultOptions} from '@angular/material';
 
 export const StringHelper = {
   hasValue: (value: any, emptyStringIsFalsy: boolean = true) => {
@@ -9,10 +10,7 @@ export const StringHelper = {
     return !isNullOrUndefined(value) && (typeof value === 'string');
   },
   generateVariableFromName(name: string): string {
-    const firstLetter = name.charAt(0).toLowerCase();
-    const remaining = name.substr(1).replace(' ', '');
-
-    return firstLetter + remaining;
+    return name.toLowerCase().replace(' ', '-');
   }
 };
 
@@ -40,4 +38,10 @@ export const ObjectHelper = {
   hasValue: (value: any) => {
     return !isNullOrUndefined(value);
   }
+};
+
+export const confirmationTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 1000,
+  hideDelay: 1000,
+  touchendHideDelay: 1000
 };

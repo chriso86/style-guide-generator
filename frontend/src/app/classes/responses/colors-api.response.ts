@@ -1,4 +1,5 @@
 export class ColorsApiResponse {
+  name: any;
   mode: string;
   count: string;
   colors: Color[];

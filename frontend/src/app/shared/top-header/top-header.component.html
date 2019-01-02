@@ -9,6 +9,21 @@
       </a>
     </div>
 
+    <!-- Project Selection -->
+    <mat-form-field fxFlex="0 0 200px" style="margin-right: 20px">
+      <mat-select placeholder="Select a Project">
+        <!-- Projects list -->
+        <mat-option *ngFor="let project of projects" [value]="project._id">
+          {{project.name}}
+        </mat-option>
+
+        <!-- Create new project -->
+        <mat-option (click)="createNewProject()">
+          Create a project
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <!-- Contribute link -->
     <div fxFlex="0 0 auto"
          fxFlex.lt-md="1 1 auto"
@@ -23,7 +38,6 @@
           <img src="../../../assets/GitHub-Mark-32px.png">
 
           <span *ngIf="app.menuOptions.mode === 'side'"> Please Contribute </span>
-
         </a>
       </span>
     </div>

@@ -13,6 +13,7 @@ import {FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
 import {ObjectHelper, StringHelper} from '../../helpers/data';
+import {ConfirmationDialogComponent} from '../../shared/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'sgg-colors',
@@ -63,9 +64,43 @@ export class ColorsComponent implements OnInit {
     // Set manually added color as a primary color
     color.isPrimary = true;
 
-    this.addPrimaryColorToGroup(color);
+    this.colorsApiService.getColorInfo(
+      new ColorsApiRequest(
+        color.tinyColor,
+        null,
+        'json'
+      ))
+      .subscribe((response: ColorsApiResponse) => {
+        if (response.name &&
+            response.name.value &&
+            color.label !== response.name.value) {
+          const config = getDialogConfig();
 
-    this.addColorToSwatches(color);
+          config.data = {
+            title: 'Recommended Color Name',
+            colorName: response.name.value
+          };
+
+          const dialogRef = this.dialog.open(ConfirmationDialogComponent, config);
+
+          dialogRef.afterClosed().subscribe(result => {
+            if (result.confirm) {
+              color.label = response.name.value;
+              color.variable = StringHelper.generateVariableFromName(response.name.value);
+
+              this.addPrimaryColorToGroup(color);
+
+              this.addColorToSwatches(color);
+            }
+          });
+        } else {
+          color.variable = StringHelper.generateVariableFromName(color.label);
+
+          this.addPrimaryColorToGroup(color);
+
+          this.addColorToSwatches(color);
+        }
+      });
   }
 
   editColor(color: Color): void {
@@ -95,8 +130,7 @@ export class ColorsComponent implements OnInit {
     dialog.afterClosed().subscribe((result: { color: Color, form: FormGroup }) => {
       if (result.color) {
         result.color.tinyColor = new TinyColor(result.color.value);
-
-        console.log(result.color.tinyColor.toName());
+        result.color.variable = StringHelper.generateVariableFromName(result.color.label);
 
         this.addColor(result.color);
 
@@ -255,11 +289,28 @@ export class ColorsComponent implements OnInit {
   }
 
   private addColorToSwatches(color: Color) {
-    this._colorSwatches.push(color);
+    this.colorsApiService.create('', color)
+      .subscribe(result => {
+        color._id = result.id;
 
-    this.colorSwatches.next(this._colorSwatches);
+        this._colorSwatches.push(color);
 
-    return color;
+        this.colorSwatches.next(this._colorSwatches);
+
+        return color;
+      });
+  }
+
+  private addPrimaryColorToGroup(color: Color) {
+    const colorGroupLabel = `Primary color: ${color.label} (${color.value}) - Color Group`;
+
+    this.groups.push(
+      new ColorGroup(colorGroupLabel, [color])
+    );
+  }
+
+  private addSupportingColorToGroup(group: ColorGroup, color: Color) {
+    group.colorSwatches.push(color);
   }
 
   private deleteColorFromSwatches(color: Color) {
@@ -283,17 +334,5 @@ export class ColorsComponent implements OnInit {
     }
 
     colorGroup.colorSwatches.splice(index, 1);
-  }
-
-  private addPrimaryColorToGroup(color: Color) {
-    const colorGroupLabel = `Primary color: ${color.label} (${color.value}) - Color Group`;
-
-    this.groups.push(
-      new ColorGroup(colorGroupLabel, [color])
-    );
-  }
-
-  private addSupportingColorToGroup(group: ColorGroup, color: Color) {
-    group.colorSwatches.push(color);
   }
 }
