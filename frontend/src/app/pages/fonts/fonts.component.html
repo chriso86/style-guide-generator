@@ -9,7 +9,7 @@
                              value="grid">
       <!-- Add new font -->
       <button mat-raised-button
-              (click)="startAddingFont($event)">
+              (click)="startAddingFont()">
         <mat-icon> add </mat-icon>
       </button>
     </mat-button-toggle-group>
@@ -27,7 +27,7 @@
 
   <!-- Add new font -->
   <div fxFlex="1 1 100%">
-    <sgg-add-new-item (activate)="startAddingFont($event)">
+    <sgg-add-new-item (activate)="startAddingFont()">
     </sgg-add-new-item>
   </div>
 </div>
