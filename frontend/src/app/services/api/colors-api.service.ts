@@ -4,27 +4,27 @@ import {Observable} from 'rxjs';
 import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
 import {Injectable} from '@angular/core';
 import {Color} from '../../classes/color';
-import {HttpParams} from '@angular/common/http';
+import {HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class ColorsApiService extends BaseApiService {
   colorsApiBaseUri: string = 'http://www.thecolorapi.com/';
-  colorsBaseUri: string = 'http://localhost:3000/colors/';
+  colorsBaseUri: string = this.backendUri + 'colors/';
 
   getColorScheme(request: ColorsApiRequest): Observable<ColorsApiResponse> {
     const uri = this.colorsApiBaseUri + 'scheme';
-    const headers = {
-      'Access-Control-Allow-Origin': '*'
-    };
+    const headers = new HttpHeaders();
+
+    headers.set('Access-Control-Allow-Origin', '*');
 
     return this.get<ColorsApiResponse>(uri, request, headers);
   }
 
   getColorInfo(request: ColorsApiRequest): Observable<ColorsApiResponse> {
     const uri = this.colorsApiBaseUri + 'id';
-    const headers = {
-      'Access-Control-Allow-Origin': '*'
-    };
+    const headers = new HttpHeaders();
+
+    headers.set('Access-Control-Allow-Origin', '*');
 
     return this.get<ColorsApiResponse>(uri, request, headers);
   }
@@ -32,9 +32,9 @@ export class ColorsApiService extends BaseApiService {
   getAll(projectId: string): Observable<Color[]> {
     const uri = this.colorsBaseUri;
     const options = new HttpParams();
-    const headers = {
-      'Access-Control-Allow-Origin': '*'
-    };
+    const headers = new HttpHeaders();
+
+    headers.set('Access-Control-Allow-Origin', '*');
 
     options.set('projectId', projectId);
 
@@ -44,9 +44,9 @@ export class ColorsApiService extends BaseApiService {
   getOne(projectId: string, colorId: string): Observable<Color[]> {
     const uri = this.colorsBaseUri;
     const options = new HttpParams();
-    const headers = {
-      'Access-Control-Allow-Origin': '*'
-    };
+    const headers = new HttpHeaders();
+
+    headers.set('Access-Control-Allow-Origin', '*');
 
     options.set('projectId', projectId);
     options.set('colorId', colorId);
@@ -57,9 +57,9 @@ export class ColorsApiService extends BaseApiService {
   create(projectId: string, color: Color) {
     const uri = this.colorsBaseUri;
     const options = new HttpParams();
-    const headers = {
-      'Access-Control-Allow-Origin': '*'
-    };
+    const headers = new HttpHeaders();
+
+    headers.set('Access-Control-Allow-Origin', '*');
 
     options.set('projectId', projectId);
 
@@ -69,13 +69,13 @@ export class ColorsApiService extends BaseApiService {
   update(projectId: string, colorId: string, color: Color) {
     const uri = this.colorsBaseUri;
     const options = new HttpParams();
-    const headers = {
-      'Access-Control-Allow-Origin': '*'
-    };
+    const headers = new HttpHeaders();
+
+    headers.set('Access-Control-Allow-Origin', '*');
 
     options.set('projectId', projectId);
     options.set('colorId', colorId);
 
-    return this.post<{id: string}>(uri, color, headers);
+    return this.put<{id: string}>(uri, color, options, headers);
   }
 }

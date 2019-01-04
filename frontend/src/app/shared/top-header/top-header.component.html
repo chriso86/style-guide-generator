@@ -11,14 +11,16 @@
 
     <!-- Project Selection -->
     <mat-form-field fxFlex="0 0 200px" style="margin-right: 20px">
-      <mat-select placeholder="Select a Project">
+      <mat-select placeholder="Select a Project"
+                  (selectionChange)="loadProject($event)">
         <!-- Projects list -->
-        <mat-option *ngFor="let project of projects" [value]="project._id">
+        <mat-option *ngFor="let project of projects"
+                    [value]="project._id">
           {{project.name}}
         </mat-option>
 
         <!-- Create new project -->
-        <mat-option (click)="createNewProject()">
+        <mat-option [value]="-1">
           Create a project
         </mat-option>
       </mat-select>
