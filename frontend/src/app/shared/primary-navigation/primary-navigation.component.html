@@ -1,6 +1,7 @@
 <mat-drawer-container fxLayout="row" autosize>
   <!-- Navigation / Router links -->
-  <mat-drawer fxFlex="0 0 180px"
+  <mat-drawer *ngIf="app.menuOptions.mode === ''"
+              fxFlex="0 0 180px"
               #drawer
               class="sgg-navigation"
               [mode]="app.menuOptions.mode"
