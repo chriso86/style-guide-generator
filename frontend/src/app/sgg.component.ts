@@ -8,6 +8,7 @@ import {MenuStates} from './enums/menu-states.enum';
 })
 export class SggComponent {
   title = 'style-guide-generator';
+  projectName = '';
   menuOptions = {
     menuIsOpen: true,
     mode: MenuStates.over
@@ -28,7 +29,7 @@ export class SggComponent {
 
     this.menuOptions.menuIsOpen = window.innerWidth > breakpoint;
     this.menuOptions.mode = window.innerWidth > breakpoint
-      ? MenuStates.side
+      ? MenuStates.top
       : MenuStates.over;
   }
 }

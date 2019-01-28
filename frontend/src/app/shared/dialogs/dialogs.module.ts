@@ -13,6 +13,7 @@ import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-
 import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
 import {AuthService} from '../../services/auth.service';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import {CreateProjectDialogComponent} from './create-project-dialog/create-project-dialog.component';
 
 @NgModule({
   imports: [
@@ -26,21 +27,24 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
     YesNoDialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CreateProjectDialogComponent
   ],
   exports: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
     YesNoDialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CreateProjectDialogComponent
   ],
   entryComponents: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
     YesNoDialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    CreateProjectDialogComponent
   ],
   providers: [
     AuthService
