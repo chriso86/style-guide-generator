@@ -4,8 +4,7 @@ import {Error} from '../../../classes/error';
 
 @Component({
   selector: 'sgg-error-dialog',
-  templateUrl: './error-dialog.component.html',
-  styleUrls: ['./error-dialog.component.scss']
+  templateUrl: './error-dialog.component.html'
 })
 export class ErrorDialogComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Error) {}

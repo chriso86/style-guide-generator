@@ -7,8 +7,7 @@ import {AddEditFontTypeDialogComponent} from '../dialogs/add-edit-font-type-dial
 
 @Component({
   selector: 'sgg-font-type',
-  templateUrl: './font-type.component.html',
-  styleUrls: ['./font-type.component.scss']
+  templateUrl: './font-type.component.html'
 })
 export class FontTypeComponent {
   @Input() font: Font;

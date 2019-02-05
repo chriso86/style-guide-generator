@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+- '8'
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+cache:
+  directories:
+  - "./node_modules"
+before_install: cd frontend
+install:
+- npm install
+script:
+- ng build --prod
+notifications:
+  slack:
+    secure: FU3ir8OQQXNUDss6iWBujqe5zSCcDqMwk0croeiQmhgaEGnACbcgwytsx6rh4PBfRaeX06jn7HAcfftasg8MUns7jIL27z1VYCYUPsBoISameSKiRsxPYEw0Di1LCDahcQhVP6lbxyT67pUGB9bZYWDwlhAGQn1EkU25nhcQvcs5fgGD9ruaZ2NXtkiPJIBGguf4ce/c4d19ChTpk307e5Nao9fLqit3ahfsRi9Swax5pHvqhIUGz3eSkGmk2xHZvNKt6x85ybPQG8298LF40hX/34scDR0x/dVvAJ0VdJ0JL7/WWpE/9v2tMs4KWOtPORkt0Atm1AZHr25QE2IclDnHmuxJsd3bONQJaHgbt9bnfKFcMBoYFyCR5JG7L2dRR7uX6iMTUmskeFch5Ag3chCf239AG2wtHpHLJG8YZJKhojanQ3pR356rOUah6FSGMpjSjBxiVcWX88w6opzxo2tcUbbfl8vcwUx9S3GLbwQs5kPivh9JZ6UmhMLxAuPSaqGQCofPAafGOZe5kZTFb2Cf/oXQPFlzdICCJjUsMTX6hrSftqHm00d7vHo1CygTjbBIFKddwUzwmjbG1rnQDH5RCVD+zNSqx23nwHWVMLbg93LG4bYRIGNRldR+O3xvsYjgjN6VuMoUlwe3bYRYeGL8qCq80gtpP90WyMX+f9U=

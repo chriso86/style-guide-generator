@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Font} from '../../classes/font';
+import {AddEditFontTypeDialogComponent} from '../../shared/dialogs/add-edit-font-type-dialog/add-edit-font-type-dialog.component';
+import {FormGroup} from '@angular/forms';
+import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material';
+import {getDialogConfig} from '../../helpers/dialogs';
 
 @Component({
   selector: 'sgg-fonts',
-  templateUrl: './fonts.component.html',
-  styleUrls: ['./fonts.component.scss']
+  templateUrl: './fonts.component.html'
 })
 export class FontsComponent implements OnInit {
   // Public vars
@@ -14,7 +18,8 @@ export class FontsComponent implements OnInit {
   // Private vars
   private _fonts: Font[] = [];
 
-  constructor() { }
+  constructor(private dialog: MatDialog,
+              private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.fonts.next(this._fonts);
@@ -66,6 +71,25 @@ export class FontsComponent implements OnInit {
     this._fonts.splice(index, 1);
 
     this.fonts.next(this._fonts);
+  }
+
+  startAddingFont() {
+    const config = getDialogConfig();
+
+    config.data = {
+      title: 'Add new font',
+        font: null
+    };
+
+    const dialog = this.dialog.open(AddEditFontTypeDialogComponent, config);
+
+    dialog.afterClosed().subscribe((result: { font: Font, form: FormGroup }) => {
+      if (result.font) {
+        this.addFont(result.font);
+
+        this.toastrService.success('Added new font');
+      }
+    });
   }
 
   private getFontConflicts(font: Font) {

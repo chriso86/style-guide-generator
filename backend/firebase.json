@@ -1,0 +1,38 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/projects",
+        "function": "projects"
+      },
+      {
+        "source": "/colors",
+        "function": "colors"
+      },
+      {
+        "source": "/fonts",
+        "function": "fonts"
+      },
+      {
+        "source": "/users",
+        "function": "users"
+      },
+      {
+        "source": "/auth",
+        "function": "auth"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "functions": {
+  }
+}

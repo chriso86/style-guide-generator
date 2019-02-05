@@ -3,8 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'sgg-yes-no-dialog',
-  templateUrl: './yes-no-dialog.component.html',
-  styleUrls: ['./yes-no-dialog.component.scss']
+  templateUrl: './yes-no-dialog.component.html'
 })
 export class YesNoDialogComponent {
   constructor(public dialogRef: MatDialogRef<YesNoDialogComponent>,

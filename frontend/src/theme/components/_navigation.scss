@@ -1,0 +1,35 @@
+.sgg {
+  &-navigation {
+    min-width: 180px !important;
+    background-color: $theme-side-navigation-bg;
+    border-right: $theme-side-navigation-border;
+
+    &__link {
+      &--type-primary {
+        display: block;
+        padding: $theme-side-navigation-link-padding;
+        color: $theme-blue-default !important;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:visited {
+          color: $theme-blue-default !important;
+        }
+
+        &:hover, &:active, &:active:hover, :focus {
+          background-color: $theme-white-active !important;
+          color: $theme-blue-active !important;
+        }
+
+        &[disabled] {
+          color: $theme-blue-disabled !important;
+        }
+      }
+
+      &--active {
+        background-color: $theme-white-active;
+        color: $theme-blue-active;
+      }
+    }
+  }
+}

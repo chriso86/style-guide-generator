@@ -11,6 +11,9 @@ import {MaterialModule} from '../../material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AddEditFontTypeDialogComponent } from './add-edit-font-type-dialog/add-edit-font-type-dialog.component';
 import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
+import {AuthService} from '../../services/auth.service';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import {CreateProjectDialogComponent} from './create-project-dialog/create-project-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,19 +26,28 @@ import { YesNoDialogComponent } from './yes-no-dialog/yes-no-dialog.component';
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    ConfirmationDialogComponent,
+    CreateProjectDialogComponent
   ],
   exports: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    ConfirmationDialogComponent,
+    CreateProjectDialogComponent
   ],
   entryComponents: [
     ErrorDialogComponent,
     AddEditColorDialogComponent,
     AddEditFontTypeDialogComponent,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    ConfirmationDialogComponent,
+    CreateProjectDialogComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class DialogsModule { }

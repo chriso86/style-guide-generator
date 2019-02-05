@@ -7,10 +7,9 @@ import { RouterModule } from '@angular/router';
 import { SggComponent } from './sgg.component';
 import { ColorSwatchComponent } from './shared/color-swatch/color-swatch.component';
 import { FontTypeComponent } from './shared/font-type/font-type.component';
-import { ColorSwatchInputSectionComponent } from './shared/color-swatch-input-section/color-swatch-input-section.component';
 import { TopHeaderComponent } from './shared/top-header/top-header.component';
 import { PrimaryNavigationComponent } from './shared/primary-navigation/primary-navigation.component';
-import { ROUTES } from './sgg.routes';
+import {ROUTES} from './sgg.routes';
 import { HomeComponent } from './pages/home/home.component';
 import { ColorsComponent } from './pages/colors/colors.component';
 import { FontsComponent } from './pages/fonts/fonts.component';
@@ -19,13 +18,18 @@ import { FooterComponent } from './shared/footer/footer.component';
 import {DialogsModule} from './shared/dialogs/dialogs.module';
 import {MaterialModule} from './material.module';
 import {SharedModule} from './shared.module';
-import {FontTypeInputSectionComponent} from './shared/font-type-input-section/font-type-input-section.component';
-
+import {ColorsApiService} from './services/api/colors-api.service';
+import {BaseApiService} from './services/api/base-api.service';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AddNewItemComponent} from './shared/add-new-item/add-new-item.component';
 
 @NgModule({
   imports: [
     // Angular Modules
     SharedModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     // Flex Layout Modules
     FlexLayoutModule,
     // Material Design Modules
@@ -33,13 +37,12 @@ import {FontTypeInputSectionComponent} from './shared/font-type-input-section/fo
     // Local Modules
     DialogsModule,
     // Routing Modules
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES, {useHash: true})
   ],
   declarations: [
     SggComponent,
     ColorSwatchComponent,
     FontTypeComponent,
-    ColorSwatchInputSectionComponent,
     TopHeaderComponent,
     PrimaryNavigationComponent,
     HomeComponent,
@@ -47,7 +50,11 @@ import {FontTypeInputSectionComponent} from './shared/font-type-input-section/fo
     FontsComponent,
     SpacingComponent,
     FooterComponent,
-    FontTypeInputSectionComponent
+    AddNewItemComponent
+  ],
+  providers: [
+    BaseApiService,
+    ColorsApiService
   ],
   bootstrap: [SggComponent]
 })

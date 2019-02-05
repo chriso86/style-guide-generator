@@ -1,20 +1,64 @@
 <mat-drawer-container fxLayout="row" autosize>
   <!-- Navigation / Router links -->
-  <mat-drawer fxFlex="0 0 20%"
+  <mat-drawer *ngIf="app.menuOptions.mode === mobileMenuState"
+              fxFlex="0 0 180px"
               #drawer
-              class="sgg-primary-navigation"
-              mode="side"
-              [opened]="true">
-    <a routerLink="/home" routerLinkActive="sgg-primary-navigation-active"> Home </a>
-    <a routerLink="/colors" routerLinkActive="sgg-primary-navigation-active"> Colors </a>
-    <a routerLink="/fonts" routerLinkActive="sgg-primary-navigation-active"> Fonts </a>
-    <a routerLink="/spacing" routerLinkActive="sgg-primary-navigation-active"> Spacing </a>
+              class="sgg-navigation"
+              [mode]="app.menuOptions.mode"
+              [opened]="app.menuOptions.menuIsOpen">
+    <!-- Home -->
+    <a routerLink="/home"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-navigation__link--active">
+      {{app.projectName}}
+    </a>
+
+    <!-- Colors -->
+    <a routerLink="/colors"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-navigation__link--active">
+      Colors
+    </a>
+
+    <!-- Fonts -->
+    <a routerLink="/fonts"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-navigation__link--active">
+      Fonts
+    </a>
+
+    <!-- Spacing -->
+    <a routerLink="/spacing"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-navigation__link--active">
+      Spacing
+    </a>
   </mat-drawer>
 
   <!-- Main Content -->
   <mat-drawer-content fxFlex="1 1 100%"
        fxLayout="column"
-       class="sgg-main-content">
+       class="sgg-layout-main-content">
+
+    <div *ngIf="app.projectName && app.menuOptions.mode === desktopMenuState">
+      <!-- Project Home -->
+      <button mat-button>
+        {{app.projectName}}
+      </button>
+
+      <button mat-button>
+        Colors
+      </button>
+
+      <button mat-button>
+        Fonts
+      </button>
+
+      <button mat-button>
+        Spacing
+      </button>
+    </div>
+
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

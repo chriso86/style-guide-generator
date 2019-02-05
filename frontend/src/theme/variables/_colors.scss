@@ -1,0 +1,71 @@
+/* Core Colors */
+$black: #000;
+$white: #fff;
+
+// Pastel Colors
+$pastel-blue--monte-carlo: #89d5c9;
+$pastel-blue--half-baked: #85cbcd;
+$pastel-blue--morning-glory: #a8dee0;
+$pastel-yellow--peach-yellow: #f9e2ae;
+$pastel-orange--cherokee: #fbc78d;
+$pastel-orange--rajah: #fac172;
+$pastel-orange--coral: #ff8357;
+$pastel-red--flame-pea: #e25b45;
+$pastel-green--feijoa: #a7d676;
+$pastel-green--wild-willow: #adc965;
+$pastel-pink--melanie: #ead2df;
+$pastel-pink--orchid: #edb5d2;
+$pastel-purple--light-wisteria: #c8a8da;
+
+@mixin background-gradient() {
+  background: $pastel-green--feijoa; /* Old browsers */
+  background: -moz-linear-gradient(left, $pastel-green--feijoa 0%, $pastel-blue--morning-glory 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, $pastel-green--feijoa 0%,$pastel-blue--morning-glory 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, $pastel-green--feijoa 0%,$pastel-blue--morning-glory 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8a8da', endColorstr='#89d5c9',GradientType=1 ); /* IE6-9 */
+}
+
+
+
+// Body
+$theme-body-bg: #ececec;
+$theme-color-delete: red;
+
+// Header
+$theme-header-font: #333;
+$theme-header-border: #ccc;
+$theme-page-header: #eee;
+
+// Side Navigation
+$theme-side-navigation-bg: #fff;
+$theme-side-navigation-border: 2px solid #ccc;
+
+// Footer
+$theme-footer-bg: #ccc;
+$theme-footer-font: #333;
+
+// Panels
+$theme-box-shadow: #ccc;
+
+// Fonts
+$theme-font-primary: #333;
+
+// Links / Buttons
+$theme-blue-default: #008abf;
+$theme-blue-active: #00adef;
+$theme-blue-disabled: #66cdf5;
+
+$theme-white-default: #fff;
+$theme-white-active: #eee;
+$theme-white-disabled: #eee;
+
+// Color Swatches
+$theme-color-swatch-description-bg: #ececec;
+$theme-color-swatch-border-color: #e3e3e3;
+$theme-color-swatch-variable-color: #999;
+
+// Font Types
+$theme-font-types-description-bg: #ececec;
+$theme-font-types-border-color: #e3e3e3;
+$theme-font-types-variable-color: #999;
+

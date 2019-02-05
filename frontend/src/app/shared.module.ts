@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 // 3rd Party Dependencies
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -15,18 +16,15 @@ import {ToastrModule, ToastrService} from 'ngx-toastr';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     ColorPickerModule,
-    ToastrModule.forRoot()
+    HttpClientModule
   ],
   exports: [
     BrowserModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    ColorPickerModule,
-    ToastrModule
+    ColorPickerModule
   ],
   providers: [
     ToastrService

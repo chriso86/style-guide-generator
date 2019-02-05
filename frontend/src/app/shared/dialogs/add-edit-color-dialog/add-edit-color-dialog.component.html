@@ -5,8 +5,9 @@
     <mat-dialog-content fxLayout="column" fxFlex="1 1 auto">
       <!-- Color picker -->
       <input fxFlex="0 0 80px"
-             class="sgg-color-input-value"
+             class="sgg-colors__color-picker"
              [(colorPicker)]="color.value"
+             cpPosition="bottom"
              [style.background]="color.value">
 
       <div fxFlex="1 1 auto">

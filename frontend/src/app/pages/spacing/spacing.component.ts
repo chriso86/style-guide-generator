@@ -4,8 +4,7 @@ import {Spacing} from '../../classes/spacing';
 
 @Component({
   selector: 'sgg-spacing',
-  templateUrl: './spacing.component.html',
-  styleUrls: ['./spacing.component.scss']
+  templateUrl: './spacing.component.html'
 })
 export class SpacingComponent implements OnInit {
   // Public vars

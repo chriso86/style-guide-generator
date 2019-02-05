@@ -3,28 +3,19 @@
 
 /* Global html */
 html {
-  // Layout
   height: 100%;
 }
 
-
 /* Global body */
 body {
-  // Layout
   min-height: 100%;
-
-  // Style
   background-color: $theme-body-bg;
 }
 
-
 /* Global root */
 html, body {
-  // Layout
   margin: 0;
   padding: 0;
-
-  // Style
   font-family: $theme-standard-font-family;
   font-size: $theme-standard-font-size;
   color: $theme-font-primary;
@@ -35,61 +26,57 @@ html, body {
   // #{$var} is string interpolation
   height: calc(100vh - #{$theme-header-height} - #{$theme-footer-height});
 }
+
 .mat-dialog-container {
   min-width: 400px; // TODO: Should be responsive
 }
 
-
-/* Global buttons */
-.sgg-call-to-action-btn-1 {
-  @include call-to-action-btn-1();
-}
-
-/* Global fonts */
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(assets/fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-  local('MaterialIcons-Regular'),
-  url(assets/fonts/MaterialIcons-Regular.woff2) format('woff2'),
-  url(assets/fonts/MaterialIcons-Regular.woff) format('woff'),
-  url(assets/fonts/MaterialIcons-Regular.ttf) format('truetype');
-}
-
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
-mat-icon {
-  font-family: 'Material Icons' !important;
-}
-
+// Global icons
 button[mat-icon-button] {
   width: 30px;
   height: 30px;
   line-height: 30px;
   background-color: $theme-white-default;
+}
+
+// Global inputs
+mat-form-field, input {
+  width: 100%;
+}
+
+.mat-button-toggle-group {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+
+  .mat-button-toggle {
+    background: $white;
+  }
+
+  .mat-raised-button {
+    border-radius: 0 !important;
+  }
+}
+
+.loader {
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  top: -24px;
+  left: -24px;
+  right: -24px;
+  bottom: -24px;
+  z-index: 121;
+  overflow: hidden;
+
+  img {
+    position: relative;
+    left: 50%;
+    margin-left: -146px;
+    z-index: 120;
+    width: 292px;
+    height: 292px;
+  }
+}
+
+mat-dialog-container {
+  min-width: 250px !important;
 }
