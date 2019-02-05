@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Font} from '../../classes/font';
-import {Color} from '../../classes/color';
 
 @Component({
   selector: 'sgg-fonts',
