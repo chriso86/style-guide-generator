@@ -3,7 +3,8 @@ import {Project} from '../../classes/project';
 import {SggComponent} from '../../sgg.component';
 import {MatDialog, MatSelectChange} from '@angular/material';
 import {getDialogConfig} from '../../helpers/dialogs';
-import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog/confirmation-dialog.component';
+import {CreateProjectDialogComponent} from '../dialogs/create-project-dialog/create-project-dialog.component';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'sgg-top-header',
@@ -31,12 +32,20 @@ export class TopHeaderComponent {
       project: null
     };
 
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, config);
+    const dialogRef = this.dialog.open(CreateProjectDialogComponent, config);
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.confirm) {
+    dialogRef.afterClosed().subscribe((result: { project: Project, form: FormGroup }) => {
+      if (result.project) {
+        if (!result.project._id) {
+          this.createProject(result.project);
+        }
 
+        // Or update
       }
     });
+  }
+
+  createProject(project: Project) {
+    // Projects API Create
   }
 }
