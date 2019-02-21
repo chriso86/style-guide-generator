@@ -8,24 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "/projects",
-        "function": "projects"
-      },
-      {
-        "source": "/colors",
-        "function": "colors"
-      },
-      {
-        "source": "/fonts",
-        "function": "fonts"
-      },
-      {
-        "source": "/users",
-        "function": "users"
-      },
-      {
-        "source": "/auth",
-        "function": "auth"
+        "source": "/api",
+        "function": "api"
       }
     ]
   },
@@ -34,5 +18,9 @@
     "indexes": "firestore.indexes.json"
   },
   "functions": {
+    "source": "functions",
+    "predeploy": [
+      "npm --prefix functions run build"
+    ]
   }
 }

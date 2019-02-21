@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
-const admin = require('../connection');
-var db = admin.firestore();
-var colorsRef = db.collection('colors');
+import * as express from 'express';
+import { connection } from '../../connection';
+
+export const colorRouter = express.Router();
+
+const db = connection.firestore();
+const colorsRef = db.collection('colors');
 
 // Disable deprecated features
 db.settings({
@@ -10,9 +12,9 @@ db.settings({
 });
 
 /* POST a new color in a project */
-router.post('/', function (req, res) {
+colorRouter.post('/', function (req, res) {
   // Set color object from DTO
-  var color = req.body.color;
+  const color = req.body.color;
 
   // Set project ID
   color.projectId = req.body.projectId;
@@ -40,7 +42,7 @@ router.post('/', function (req, res) {
         .catch(function (e) {
           console.log('Could not add color');
 
-          res.send(e)
+          res.send(e);
         });
     })
     .catch((err) => {
@@ -49,35 +51,36 @@ router.post('/', function (req, res) {
 });
 
 /* PUT an existing color in a project */
-router.put('/', function (req, res) {
+colorRouter.put('/', function (req, res) {
   // Set color object from DTO
-  var color = req.body.color;
-  var existingColor = colorsRef.doc(req.body.colorId);
+  const color = req.body.color;
+  const existingColor = colorsRef.doc(req.body.colorId);
 
   // Update color
   existingColor.set(color, { merge: true })
     .then(function() {
-      console.log("Color successfully updated!");
+      console.log('Color successfully updated!');
 
       res.send(req.body.colorId);
     })
     .catch(function(error) {
-      console.error("Error writing document: ", error);
+      console.error('Error writing document: ', error);
     });
 });
 
 /* GET one or all colors for a project */
-router.get('/', function (req, res) {
-  var colors = [];
-
+colorRouter.get('/', function (req, res) {
   colorsRef.where('projectId', '==', req.body.projectId)
     .get()
     .then(function(querySnapshot) {
+      const colors: any[] = [];
+
       querySnapshot.forEach(doc => {
-        var color = doc.data();
+        const color = doc.data();
 
         color._id = doc.id;
 
+        // @ts-ignore
         colors.push(color);
       });
 
@@ -88,5 +91,3 @@ router.get('/', function (req, res) {
       console.log(e);
     });
 });
-
-module.exports = router;

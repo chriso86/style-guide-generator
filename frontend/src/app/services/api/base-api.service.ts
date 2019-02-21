@@ -5,7 +5,7 @@ import {Observable, Observer} from 'rxjs';
 
 @Injectable()
 export class BaseApiService {
-  backendUri = 'https://girder-backend.firebaseapp.com/';
+  backendUri = 'https://us-central1-girder-backend.cloudfunctions.net/api/';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -25,6 +25,7 @@ export class BaseApiService {
           (response: BaseResponse) => {
             const result = response.data || response || {};
 
+            // @ts-ignore
             if (response.errors && response.errors.length) {
               // Handle errors
             }
@@ -52,6 +53,7 @@ export class BaseApiService {
         headers: headers
       }).subscribe(
         (response: BaseResponse) => {
+          // @ts-ignore
           if (response.errors && response.errors.length) {
             // Handle errors
           }
@@ -79,6 +81,7 @@ export class BaseApiService {
         headers: headers
       }).subscribe(
         (response: BaseResponse) => {
+          // @ts-ignore
           if (response.errors && response.errors.length) {
             // Handle errors
           }
@@ -106,6 +109,7 @@ export class BaseApiService {
         headers: headers
       }).subscribe(
         (response: BaseResponse) => {
+          // @ts-ignore
           if (response.errors && response.errors.length) {
             // Handle errors
           }
