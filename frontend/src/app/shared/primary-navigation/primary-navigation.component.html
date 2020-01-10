@@ -1,16 +1,17 @@
 <mat-drawer-container fxLayout="row" autosize>
   <!-- Navigation / Router links -->
-  <mat-drawer fxFlex="0 0 180px"
+  <mat-drawer *ngIf="app.menuOptions.mode === mobileMenuState"
+              fxFlex="0 0 180px"
               #drawer
               class="sgg-navigation"
               [mode]="app.menuOptions.mode"
               [opened]="app.menuOptions.menuIsOpen">
     <!-- Home -->
-    <!--<a routerLink="/home"-->
-       <!--class="sgg-navigation__link&#45;&#45;type-primary"-->
-       <!--routerLinkActive="sgg-navigation__link&#45;&#45;active">-->
-      <!--Home-->
-    <!--</a>-->
+    <a routerLink="/home"
+       class="sgg-navigation__link--type-primary"
+       routerLinkActive="sgg-navigation__link--active">
+      {{app.projectName}}
+    </a>
 
     <!-- Colors -->
     <a routerLink="/colors"
@@ -38,6 +39,26 @@
   <mat-drawer-content fxFlex="1 1 100%"
        fxLayout="column"
        class="sgg-layout-main-content">
+
+    <div *ngIf="app.projectName && app.menuOptions.mode === desktopMenuState">
+      <!-- Project Home -->
+      <button mat-button>
+        {{app.projectName}}
+      </button>
+
+      <button mat-button>
+        Colors
+      </button>
+
+      <button mat-button>
+        Fonts
+      </button>
+
+      <button mat-button>
+        Spacing
+      </button>
+    </div>
+
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

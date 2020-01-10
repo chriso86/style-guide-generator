@@ -1,4 +1,5 @@
 import {Component, ViewContainerRef} from '@angular/core';
+import {MenuStates} from './enums/menu-states.enum';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import {Component, ViewContainerRef} from '@angular/core';
 })
 export class SggComponent {
   title = 'style-guide-generator';
+  projectName = '';
   menuOptions = {
     menuIsOpen: true,
-    mode: 'side'
+    mode: MenuStates.over
   };
 
   constructor(public vcRef: ViewContainerRef) {
@@ -27,7 +29,7 @@ export class SggComponent {
 
     this.menuOptions.menuIsOpen = window.innerWidth > breakpoint;
     this.menuOptions.mode = window.innerWidth > breakpoint
-      ? 'side'
-      : 'over';
+      ? MenuStates.top
+      : MenuStates.over;
   }
 }

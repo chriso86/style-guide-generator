@@ -7,7 +7,13 @@ import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
 import {ColorSchemeTypes} from '../../enums/color-scheme-types.enum';
 import {TinyColor} from '@ctrl/tinycolor';
 import {ColorGroup} from '../../classes/colorGroup';
-import {isNullOrUndefined} from 'util';
+import {getDialogConfig} from '../../helpers/dialogs';
+import {AddEditColorDialogComponent} from '../../shared/dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
+import {FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material';
+import {ToastrService} from 'ngx-toastr';
+import {ObjectHelper, StringHelper} from '../../helpers/data';
+import {ConfirmationDialogComponent} from '../../shared/dialogs/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'sgg-colors',
@@ -26,7 +32,9 @@ export class ColorsComponent implements OnInit {
   // Private vars
   private _colorSwatches: Color[] = [];
 
-  constructor(private colorsApiService: ColorsApiService) {
+  constructor(private colorsApiService: ColorsApiService,
+              private dialog: MatDialog,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit() {
@@ -56,9 +64,43 @@ export class ColorsComponent implements OnInit {
     // Set manually added color as a primary color
     color.isPrimary = true;
 
-    this.addPrimaryColorToGroup(color);
+    this.colorsApiService.getColorInfo(
+      new ColorsApiRequest(
+        color.tinyColor,
+        null,
+        'json'
+      ))
+      .subscribe((response: ColorsApiResponse) => {
+        if (response.name &&
+            response.name.value &&
+            color.label !== response.name.value) {
+          const config = getDialogConfig();
 
-    this.addColorToSwatches(color);
+          config.data = {
+            title: 'Recommended Color Name',
+            colorName: response.name.value
+          };
+
+          const dialogRef = this.dialog.open(ConfirmationDialogComponent, config);
+
+          dialogRef.afterClosed().subscribe(result => {
+            if (result.confirm) {
+              color.label = response.name.value;
+              color.variable = StringHelper.generateVariableFromName(response.name.value);
+
+              this.addPrimaryColorToGroup(color);
+
+              this.addColorToSwatches(color);
+            }
+          });
+        } else {
+          color.variable = StringHelper.generateVariableFromName(color.label);
+
+          this.addPrimaryColorToGroup(color);
+
+          this.addColorToSwatches(color);
+        }
+      });
   }
 
   editColor(color: Color): void {
@@ -71,21 +113,30 @@ export class ColorsComponent implements OnInit {
 
   deleteColor(color: Color): void {
     this.deleteColorFromSwatches(color);
+
+    this.deleteColorFromGroup(color);
   }
 
-  private getColorConflicts(color: Color) {
-    let conflictedValue = false;
-    let conflictedLabel = false;
+  startAddingColor() {
+    const config = getDialogConfig();
 
-    this._colorSwatches.forEach((existingColor: Color) => {
-      conflictedValue = color.value === existingColor.value && !conflictedValue;
-      conflictedLabel = color.label === existingColor.label && !conflictedLabel;
-    });
-
-    return {
-      hasValue: conflictedValue,
-      hasLabel: conflictedLabel
+    config.data = {
+      title: 'Add new color',
+      color: null
     };
+
+    const dialog = this.dialog.open(AddEditColorDialogComponent, config);
+
+    dialog.afterClosed().subscribe((result: { color: Color, form: FormGroup }) => {
+      if (result.color) {
+        result.color.tinyColor = new TinyColor(result.color.value);
+        result.color.variable = StringHelper.generateVariableFromName(result.color.label);
+
+        this.addColor(result.color);
+
+        this.toastrService.success('Added new color');
+      }
+    });
   }
 
   // Generate color palettes
@@ -190,7 +241,7 @@ export class ColorsComponent implements OnInit {
               color.name.value,
               color.name.value,
               color.hex.value,
-              this.generateVariableFromColorName(color.name.value),
+              StringHelper.generateVariableFromName(color.name.value),
               new TinyColor(color.rgb.value)
             );
 
@@ -202,7 +253,7 @@ export class ColorsComponent implements OnInit {
                     return groupColor.value === `#${request.hex}`;
                   });
 
-                return !isNullOrUndefined(matchingColorGroup);
+                return ObjectHelper.hasValue(matchingColorGroup);
               });
 
               // Add supporting color to matching primary color's group
@@ -222,12 +273,44 @@ export class ColorsComponent implements OnInit {
   }
 
   // Private functions
+  private getColorConflicts(color: Color) {
+    let conflictedValue = false;
+    let conflictedLabel = false;
+
+    this._colorSwatches.forEach((existingColor: Color) => {
+      conflictedValue = color.value === existingColor.value && !conflictedValue;
+      conflictedLabel = color.label === existingColor.label && !conflictedLabel;
+    });
+
+    return {
+      hasValue: conflictedValue,
+      hasLabel: conflictedLabel
+    };
+  }
+
   private addColorToSwatches(color: Color) {
-    this._colorSwatches.push(color);
+    this.colorsApiService.create('', color)
+      .subscribe(result => {
+        color._id = result.id;
 
-    this.colorSwatches.next(this._colorSwatches);
+        this._colorSwatches.push(color);
 
-    return color;
+        this.colorSwatches.next(this._colorSwatches);
+
+        return color;
+      });
+  }
+
+  private addPrimaryColorToGroup(color: Color) {
+    const colorGroupLabel = `Primary color: ${color.label} (${color.value}) - Color Group`;
+
+    this.groups.push(
+      new ColorGroup(colorGroupLabel, [color])
+    );
+  }
+
+  private addSupportingColorToGroup(group: ColorGroup, color: Color) {
+    group.colorSwatches.push(color);
   }
 
   private deleteColorFromSwatches(color: Color) {
@@ -242,46 +325,14 @@ export class ColorsComponent implements OnInit {
     this.colorSwatches.next(this._colorSwatches);
   }
 
-  private generateVariableFromColorName(colorName: string): string {
-    const firstLetter = colorName.charAt(0).toLowerCase();
-    const remaining = colorName.substr(1).replace(' ', '');
+  private deleteColorFromGroup(color: Color) {
+    const colorGroup = this.groups.find(group => group.title === color.groupName);
+    const index = colorGroup.colorSwatches.findIndex(colorSwatch => colorSwatch.value === color.value);
 
-    return firstLetter + remaining;
-  }
+    if (index < 0) {
+      return;
+    }
 
-  private addPrimaryColorToGroup(color: Color) {
-    const colorGroupLabel = `Primary color: ${color.label} (${color.value}) - Color Group`;
-
-    this.groups.push(
-      new ColorGroup(colorGroupLabel, [color])
-    );
-  }
-
-  private addSupportingColorToGroup(group: ColorGroup, color: Color) {
-    group.colorSwatches.push(color);
-    // TODO: THIS DOESN'T WORK
-    // const colorSwatchesClone = Object.assign([], group.colorSwatches);
-    // const sortedMutatedArray = sortColors(
-    //   colorSwatchesClone.map(colorOnSwatch => {
-    //     return [
-    //       colorOnSwatch.tinyColor.r,
-    //       colorOnSwatch.tinyColor.g,
-    //       colorOnSwatch.tinyColor.b
-    //     ];
-    //   })
-    // );
-    // const sortedColorSwatchArray = [];
-    // sortedMutatedArray.forEach(mutatedColor => {
-    //   const matchingColor = colorSwatchesClone.find(colorSwatch => {
-    //     return colorSwatch.tinyColor.r === mutatedColor[0]
-    //       && colorSwatch.tinyColor.g === mutatedColor[1]
-    //       && colorSwatch.tinyColor.b === mutatedColor[2];
-    //   });
-    //
-    //   sortedColorSwatchArray.push(matchingColor);
-    // });
-    //
-    // group.colorSwatches.length = 0;
-    // Object.assign(group.colorSwatches, sortedColorSwatchArray);
+    colorGroup.colorSwatches.splice(index, 1);
   }
 }

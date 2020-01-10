@@ -1,6 +1,7 @@
 import {TinyColor} from '@ctrl/tinycolor';
 
 export class Color {
+  _id: string;
   label: string = '';
   description: string = '';
   value: string = '';
@@ -8,6 +9,7 @@ export class Color {
   tinyColor: TinyColor = null;
   isPrimary: boolean = false;
   parentColor: string = '';
+  groupName: string;
 
   constructor(
     label?: string,

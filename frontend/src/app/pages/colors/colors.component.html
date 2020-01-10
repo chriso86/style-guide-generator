@@ -1,16 +1,27 @@
-<!-- Filters -->
-<div fxLayout="row" class="sgg-layout-header">
+<!-- Buttons and Filters -->
+<div fxLayout="row"
+     class="sgg-layout-header">
   <h3> Colors </h3>
 
-  <div fxFlex="1 1 100%" class="sgg-layout-header__list-filters">
-    <mat-button-toggle-group #viewMode="matButtonToggleGroup" value="grid">
+  <div fxFlex="1 1 100%"
+       class="sgg-layout-header__list-filters">
+    <mat-button-toggle-group #viewMode="matButtonToggleGroup"
+                             value="grid">
+      <!-- View grid -->
       <mat-button-toggle value="grid">
-        <mat-icon>view_comfy</mat-icon>
+        <mat-icon> view_comfy </mat-icon>
       </mat-button-toggle>
 
+      <!-- View groups -->
       <mat-button-toggle value="group">
-        <mat-icon>view_list</mat-icon>
+        <mat-icon> view_list </mat-icon>
       </mat-button-toggle>
+
+      <!-- Add new color -->
+      <button mat-raised-button
+              (click)="startAddingColor()">
+        <mat-icon> add </mat-icon>
+      </button>
     </mat-button-toggle-group>
   </div>
 </div>
@@ -45,9 +56,8 @@
        fxFlex.md="1 1 25%"
        fxFlex.sm="1 1 50%"
        fxFlex.xs="1 1 100%">
-    <sgg-color-swatch-input-section (success)="addColor($event)"
-                                    fxFlex="1 1 100%">
-    </sgg-color-swatch-input-section>
+    <sgg-add-new-item (activate)="startAddingColor()">
+    </sgg-add-new-item>
   </div>
 </div>
 
@@ -66,7 +76,7 @@
          class="sgg-layout-container">
       <!-- List existing colors in group -->
       <div *ngFor="let color of group.colorSwatches"
-           fxFlex.gt-lg="1 1 20%"
+           fxFlex="1 1 20%"
            fxFlex.md="1 1 25%"
            fxFlex.sm="1 1 50%"
            fxFlex.xs="1 1 100%">
@@ -88,12 +98,11 @@
 
   <!-- Add new color -->
   <div fxLayout="row"
-       fxFlex.gt-lg="1 1 20%"
+       fxFlex="1 1 20%"
        fxFlex.md="1 1 25%"
        fxFlex.sm="1 1 50%"
        fxFlex.xs="1 1 100%">
-    <sgg-color-swatch-input-section (success)="addColor($event)"
-                                    fxFlex="1 1 100%">
-    </sgg-color-swatch-input-section>
+    <sgg-add-new-item (activate)="startAddingColor()">
+    </sgg-add-new-item>
   </div>
 </div>

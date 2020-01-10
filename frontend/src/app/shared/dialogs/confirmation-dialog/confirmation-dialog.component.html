@@ -1,0 +1,31 @@
+<div fxLayout="column">
+  <h1 fxFlex="0 0 auto" matDialogTitle> {{data.title}} </h1>
+
+  <form fxLayout="row">
+    <mat-dialog-content fxLayout="column" fxFlex="1 1 auto">
+      <p> Would you like to rename this color to the recommended color name? </p>
+
+      <p> Color name: <b>{{data.colorName}}</b> </p>
+
+      <!-- Control buttons -->
+      <mat-dialog-actions>
+        <div fxFlex="1 1 auto" fxLayout="row">
+          <!-- No Thanks -->
+          <button fxFlex="1 1 50%"
+                  mat-button
+                  mat-dialog-close>
+            No Thanks
+          </button>
+
+          <!-- Rename -->
+          <button fxFlex="1 1 50%"
+                  mat-flat-button
+                  type="submit"
+                  [mat-dialog-close]="{confirm: true}">
+            Rename
+          </button>
+        </div>
+      </mat-dialog-actions>
+    </mat-dialog-content>
+  </form>
+</div>

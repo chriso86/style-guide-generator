@@ -2,10 +2,10 @@
 
 .sgg-layout {
   &-main-header {
+    @include background-gradient();
     width: 100%;
     min-height: 58px;
     padding: 10px 0;
-    background-color: $theme-header-bg;
     color: $theme-header-font;
     border-bottom: 3px solid black;
 
@@ -72,7 +72,8 @@
   }
 
   &-header {
-    background-color: $theme-page-header;
+    background-color: $black;
+    color: $white;
 
     h3 {
       padding-left: 10px;

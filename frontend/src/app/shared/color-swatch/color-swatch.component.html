@@ -80,7 +80,7 @@
       <button mat-icon-button
               fxFlex="0 1 auto"
               fxFlexAlign="end"
-              matTooltip="Copy color variable"
+              matTooltip="Copied variable!"
               matTooltipPosition="above"
               (click)="selectVariableName($event)">
         <mat-icon> content_copy</mat-icon>
@@ -89,8 +89,9 @@
     </div>
 
     <!-- Color description and explanation -->
-    <p fxFlex="1 1 auto"> {{color.description}} </p>
-
+    <p *ngIf="color.description"
+       fxFlex="1 1 auto">
+      {{color.description}}
+    </p>
   </div>
-
 </div>
