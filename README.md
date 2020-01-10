@@ -1,5 +1,6 @@
 # StyleGuideGenerator
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7d527469af6048388481734b60dee0a7)](https://app.codacy.com/app/chriso86/style-guide-generator?utm_source=github.com&utm_medium=referral&utm_content=chriso86/style-guide-generator&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.com/chriso86/style-guide-generator.svg?branch=master)](https://travis-ci.com/chriso86/style-guide-generator)
 [![Version](https://img.shields.io/github/tag/chriso86/style-guide-generator.svg?branch=master&label=latest%20version)](https://github.com/chriso86/style-guide-generator/tags)
 [![License](https://img.shields.io/github/license/chriso86/style-guide-generator.svg)](https://github.com/chriso86/style-guide-generator)
