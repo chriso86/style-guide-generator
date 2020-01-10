@@ -1,15 +1,15 @@
 <div fxLayout="row wrap" fxLayoutGap="20px" class="sgg-component">
-    <!-- List existing fonts -->
-    <div *ngFor="let spacing of Spacing | async" fxFlex="1 1 100%" class="sgg-component-row-gap">
-        <sgg-spacing-type [spacing]="spacing"
-                          (edit)="editFont($event)"
-                          (delete)="deleteFont($event)">
-        </sgg-spacing-type>
-      </div>
-    
-      <!-- Add new font -->
-      <div fxFlex="1 1 100%" class="sgg-component-row-gap">
-        <sgg-spacing-input-section (success)="addSpacing($event)">
-        </sgg-spacing-input-section>
-      </div>
+  <!-- List existing fonts -->
+  <!--<div *ngFor="let spacing of Spacing | async" fxFlex="1 1 100%" class="sgg-component-row-gap">-->
+    <!--<sgg-spacing-type [spacing]="spacing"-->
+                      <!--(edit)="editFont($event)"-->
+                      <!--(delete)="deleteFont($event)">-->
+    <!--</sgg-spacing-type>-->
+  <!--</div>-->
+
+  <!--&lt;!&ndash; Add new font &ndash;&gt;-->
+  <!--<div fxFlex="1 1 100%" class="sgg-component-row-gap">-->
+    <!--<sgg-spacing-input-section (success)="addSpacing($event)">-->
+    <!--</sgg-spacing-input-section>-->
+  <!--</div>-->
 </div>

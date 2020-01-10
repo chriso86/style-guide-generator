@@ -8,7 +8,7 @@ import {Spacing} from '../../classes/spacing';
 })
 export class SpacingComponent implements OnInit {
   // Public vars
-  fonts: BehaviorSubject<Spacing[]> = new BehaviorSubject<Spacing[]>([]);
+  spacing: BehaviorSubject<Spacing[]> = new BehaviorSubject<Spacing[]>([]);
 
   // Private vars
   private _spacing: Spacing[] = [];

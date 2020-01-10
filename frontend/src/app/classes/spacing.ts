@@ -1,5 +1,6 @@
 export class Spacing {
   label: string = '';
+  name: string = '';
   description: string = '';
   value: string = '';
   variable: string = '';

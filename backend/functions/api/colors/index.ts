@@ -68,7 +68,7 @@ colorRouter.put('/', function (req, res) {
     });
 });
 
-/* GET one or all colors for a project */
+/* GET all colors for a project */
 colorRouter.get('/', function (req, res) {
   colorsRef.where('projectId', '==', req.body.projectId)
     .get()
