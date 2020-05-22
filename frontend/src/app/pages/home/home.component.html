@@ -1,5 +1,13 @@
 <div class="sgg-layout-container">
-  <button class="sgg-controls__button--type-blue">
-    Create a new theme!
-  </button>
+  <div class="sgg-no-projects" *ngIf="true">
+    <div class="sgg-no-projects__title"> No Projects found :( </div>
+
+    <button class="sgg-no-projects__button-cta">
+      <span>Create new Project</span>
+    </button>
+
+    <div class="sgg-no-projects__button-overlay">
+      <mat-icon class="sgg-no-projects__button-overlay-arrow">play_arrow</mat-icon>
+    </div>
+  </div>
 </div>

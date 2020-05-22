@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {BaseResponse, JsonDataObject} from '../../classes/responses/base.response';
+import {BaseResponse, JsonDataObject} from '../classes/responses/base.response';
 import {Observable, Observer} from 'rxjs';
 
 @Injectable()

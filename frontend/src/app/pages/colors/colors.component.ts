@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Color} from '../../classes/color';
 import {BehaviorSubject} from 'rxjs';
-import {ColorsApiService} from '../../services/api/colors-api.service';
+import {ColorsApiService} from '../../gateways/colors-api.service';
 import {ColorsApiRequest} from '../../classes/requests/colors-api.request';
 import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
 import {ColorSchemeTypes} from '../../enums/color-scheme-types.enum';
