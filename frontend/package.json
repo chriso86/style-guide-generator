@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
     "@angular/cdk": "^9.2.4",
-    "@angular/flex-layout": "^8.0.0-beta.27",
+    "@angular/flex-layout": "^9.0.0-beta.31",
     "@angular/material": "^9.2.4",
     "@ctrl/tinycolor": "^2.2.0",
     "find-color": "^0.1.0",

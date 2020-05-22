@@ -4,8 +4,8 @@ import {Font} from '../../classes/font';
 import {AddEditFontTypeDialogComponent} from '../../shared/dialogs/add-edit-font-type-dialog/add-edit-font-type-dialog.component';
 import {FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {MatDialog} from '@angular/material';
 import {getDialogConfig} from '../../helpers/dialogs';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'sgg-fonts',

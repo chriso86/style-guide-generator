@@ -1,10 +1,11 @@
 import {Component, Host, Input} from '@angular/core';
 import {Project} from '../../classes/project';
 import {SggComponent} from '../../sgg.component';
-import {MatDialog, MatSelectChange} from '@angular/material';
 import {getDialogConfig} from '../../helpers/dialogs';
 import {CreateProjectDialogComponent} from '../dialogs/create-project-dialog/create-project-dialog.component';
 import {FormGroup} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {MatSelectChange} from '@angular/material/select';
 
 @Component({
   selector: 'sgg-top-header',
@@ -23,7 +24,7 @@ export class TopHeaderComponent {
 
     // Id positive ID, load existing project
     if (projectId > -1) {
-      
+
     }
 
     // Load Create new project dialog
