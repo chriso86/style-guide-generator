@@ -1,5 +1,5 @@
 import {isNullOrUndefined} from 'util';
-import {MatTooltipDefaultOptions} from '@angular/material';
+import {MatTooltipDefaultOptions} from '@angular/material/tooltip';
 
 export const StringHelper = {
   hasValue: (value: any, emptyStringIsFalsy: boolean = true) => {

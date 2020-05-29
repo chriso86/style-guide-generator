@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Color} from '../../classes/color';
 import {BehaviorSubject} from 'rxjs';
-import {ColorsApiService} from '../../services/api/colors-api.service';
+import {ColorsApiService} from '../../gateways/colors-api.service';
 import {ColorsApiRequest} from '../../classes/requests/colors-api.request';
 import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
 import {ColorSchemeTypes} from '../../enums/color-scheme-types.enum';
@@ -10,10 +10,10 @@ import {ColorGroup} from '../../classes/colorGroup';
 import {getDialogConfig} from '../../helpers/dialogs';
 import {AddEditColorDialogComponent} from '../../shared/dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
 import {FormGroup} from '@angular/forms';
-import {MatDialog} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
 import {ObjectHelper, StringHelper} from '../../helpers/data';
 import {ConfirmationDialogComponent} from '../../shared/dialogs/confirmation-dialog/confirmation-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'sgg-colors',

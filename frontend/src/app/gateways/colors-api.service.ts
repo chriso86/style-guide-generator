@@ -1,9 +1,9 @@
 import {BaseApiService} from './base-api.service';
-import {ColorsApiRequest} from '../../classes/requests/colors-api.request';
+import {ColorsApiRequest} from '../classes/requests/colors-api.request';
 import {Observable} from 'rxjs';
-import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
+import {ColorsApiResponse} from '../classes/responses/colors-api.response';
 import {Injectable} from '@angular/core';
-import {Color} from '../../classes/color';
+import {Color} from '../classes/color';
 import {HttpHeaders, HttpParams} from '@angular/common/http';
 
 @Injectable()

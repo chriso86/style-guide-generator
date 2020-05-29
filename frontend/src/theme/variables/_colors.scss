@@ -17,6 +17,11 @@ $pastel-pink--melanie: #ead2df;
 $pastel-pink--orchid: #edb5d2;
 $pastel-purple--light-wisteria: #c8a8da;
 
+// No results colors
+$cta-blueberry: #6c63ff;
+$melrose: #aaa4ff;
+$titan-white: #f6f5ff;
+
 @mixin background-gradient() {
   background: $pastel-green--feijoa; /* Old browsers */
   background: -moz-linear-gradient(left, $pastel-green--feijoa 0%, $pastel-blue--morning-glory 100%); /* FF3.6-15 */

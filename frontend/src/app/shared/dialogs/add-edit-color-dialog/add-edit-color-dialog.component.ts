@@ -1,8 +1,7 @@
-import {Component, Host, Inject, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Color} from '../../../classes/color';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {SggComponent} from '../../../sgg.component';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'sgg-add-edit-color-dialog',

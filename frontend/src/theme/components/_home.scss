@@ -1,0 +1,119 @@
+@import '../variables/index';
+
+.sgg-no-projects {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  padding: 50px 0;
+  text-align: center;
+  background-size: 500px auto !important;
+  background: url("/../../assets/no-projects.svg") no-repeat center;
+
+  &__title {
+    font-size: 1.5em;
+    color: $pastel-purple--light-wisteria;
+    margin-top: 40px;
+  }
+
+  &__button {
+    @media only screen and (min-width: 961px) {
+      &-overlay {
+        width: 185px;
+        height: 42px;
+        background: $white;
+        position: absolute;
+        margin-top:-25px;
+        margin-left: -1px;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        border-radius: 10px;
+
+        &-arrow {
+          position: absolute;
+          top: -7px;
+          right: -24px;
+          font-size: 56px;
+          width: 56px !important;
+          height: 56px !important;
+          color: $white;
+          transition: all ease-out 0.3s;
+        }
+      }
+    }
+
+    &-cta {
+      width: 200px;
+      height: 40px;
+      position: absolute;
+      font-size: 18px;
+      text-align: center;
+      border: none;
+      padding: 10px 15px;
+      background-color: $white;
+      color: $cta-blueberry;
+      cursor: pointer;
+      z-index: 2;
+      outline: 0;
+      transition: background ease-in 0.3s;
+
+      @media only screen and (min-width: 961px) {
+        top: 50%;
+        left: 50%;
+        margin-top: -24px;
+        margin-left: -10px;
+        background: linear-gradient(45deg, $cta-blueberry, $pastel-orange--coral, $cta-blueberry, $pastel-orange--coral, $cta-blueberry, $pastel-orange--coral, $cta-blueberry, $pastel-orange--coral);
+        background-size: 800%;
+        animation: gradient 30s linear infinite;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        @keyframes gradient {
+          0% {
+            background-position: 0 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0 50%;
+          }
+        }
+
+        &:hover {
+          background: transparent;
+          color: $pastel-orange--coral;
+          -webkit-background-clip: initial;
+          -webkit-text-fill-color: initial;
+
+          &~ div {
+            & > mat-icon {
+              color: $cta-blueberry !important;
+              right: -36px !important;
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__placeholder {
+    height: auto;
+
+    @media only screen
+    and (min-width: 0) and (max-width: 600px) {
+      width: 80%;
+    }
+
+    @media only screen
+    and (min-width: 601px) and (max-width: 960px) {
+      width: 50%;
+    }
+
+    @media only screen
+    and (min-width: 961px) {
+      width: 500px;
+    }
+  }
+}

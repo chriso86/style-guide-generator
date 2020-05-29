@@ -1,10 +1,12 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Color} from '../../classes/color';
-import {MatSnackBar, MatDialog, MAT_TOOLTIP_DEFAULT_OPTIONS} from '@angular/material';
 import { AddEditColorDialogComponent } from '../dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
 import { YesNoDialogComponent } from '../dialogs/yes-no-dialog/yes-no-dialog.component';
 import { ToastrService } from 'ngx-toastr';
 import {confirmationTooltipDefaults} from '../../helpers/data';
+import {MAT_TOOLTIP_DEFAULT_OPTIONS} from '@angular/material/tooltip';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'sgg-color-swatch',

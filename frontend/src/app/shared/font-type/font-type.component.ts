@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Font} from '../../classes/font';
 import {YesNoDialogComponent} from '../dialogs/yes-no-dialog/yes-no-dialog.component';
-import {MatDialog, MatSnackBar} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
 import {AddEditFontTypeDialogComponent} from '../dialogs/add-edit-font-type-dialog/add-edit-font-type-dialog.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'sgg-font-type',
