@@ -5,12 +5,12 @@ export class Loader {
     public id: number;
     public valid: boolean;
 
-    private _states: string[] = [];
+    private readonly _states: string[] = [];
     private _state: BehaviorSubject<string> = new BehaviorSubject<string>(DefaultLoaderStatesEnum.AwaitingUserInput);
     private _subscriptions: Subscription[] = [];
 
     get state() {
-        return this._state;
+        return this._state.getValue();
     }
 
     constructor(id: number, states: string[] = [], defaultState: string = '') {

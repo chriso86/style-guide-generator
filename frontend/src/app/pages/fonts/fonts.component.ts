@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {Font} from '../../classes/font';
-import {AddEditFontTypeDialogComponent} from '../../shared/dialogs/add-edit-font-type-dialog/add-edit-font-type-dialog.component';
+import {Font} from './models/font';
+import {AddEditFontTypeDialogComponent} from './add-edit-font-type-dialog/add-edit-font-type-dialog.component';
 import {FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {getDialogConfig} from '../../helpers/dialogs';
+import {getDialogConfig} from '../../../core/helpers/dialogs';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({

@@ -13,5 +13,5 @@ import { LoaderComponent } from './loader.component';
         LoaderService
     ]
 })
-export class AbacusLoaderModule {
+export class SggLoaderCoreModule {
 }

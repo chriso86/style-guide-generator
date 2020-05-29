@@ -1,0 +1,67 @@
+<div class="sgg-layout-main-header" fxLayout="column">
+  <div fxFlex="1 1 auto" fxLayout="row wrap">
+    <!-- Logo -->
+    <div fxLayout="column" fxFlex="1 1 auto">
+      <a routerLink="/colors">
+        <img src="../../assets/logo-with-text-o.png?v=1"
+             title="Style Guide Generator"
+             class="sgg-layout-main-header__logo"
+             alt="Site Logo">
+      </a>
+    </div>
+
+    <!-- Project Selection -->
+    <mat-form-field fxFlex="0 0 200px" style="margin-right: 20px">
+      <mat-select placeholder="Select a Project"
+                  (selectionChange)="loadProject($event)">
+        <!-- Projects list -->
+        <mat-option *ngFor="let project of projects"
+                    [value]="project._id">
+          {{project.name}}
+        </mat-option>
+
+        <!-- Create new project -->
+        <mat-option [value]="-1">
+          Create a project
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Contribute link -->
+    <div fxFlex="0 0 auto"
+         fxFlex.lt-md="1 1 auto"
+         fxLayout="column"
+         fxLayoutAlign="center">
+      <span class="sgg-layout-main-header__link"
+            fxFlex="1 1 48px">
+        <a href="https://github.com/chriso86/style-guide-generator/tree/development"
+           target="_blank">
+
+          <!-- Github image -->
+          <img src="../../assets/GitHub-Mark-32px.png" alt="GitHub repository">
+
+          <span *ngIf="app.menuOptions.mode === 'side'"> Please Contribute </span>
+        </a>
+      </span>
+    </div>
+
+    <div *ngIf="app.menuOptions.mode === 'over'"
+         fxFlex="1 1 58px"
+         fxLayout="column"
+         fxLayoutAlign="center">
+      <span *ngIf="!app.menuOptions.menuIsOpen"
+            class="sgg-layout-main-header__link"
+            fxFlex="0 0 48px"
+            (click)="app.menuOptions.menuIsOpen = true">
+        <i class="material-icons"> menu </i>
+      </span>
+
+      <span *ngIf="app.menuOptions.menuIsOpen"
+            class="sgg-layout-main-header__link"
+            fxFlex="0 0 48px"
+            (click)="app.menuOptions.menuIsOpen = false">
+        <i class="material-icons"> close </i>
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import {Component, ViewContainerRef} from '@angular/core';
-import {MenuStates} from './enums/menu-states.enum';
+import {MenuStates} from '../core/primary-navigation/menu-states.enum';
 
 @Component({
   selector: 'app-root',

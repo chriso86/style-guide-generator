@@ -1,19 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {Color} from '../../classes/color';
+import {Color} from './models/color';
 import {BehaviorSubject} from 'rxjs';
-import {ColorsApiService} from '../../gateways/colors-api.service';
-import {ColorsApiRequest} from '../../classes/requests/colors-api.request';
-import {ColorsApiResponse} from '../../classes/responses/colors-api.response';
-import {ColorSchemeTypes} from '../../enums/color-scheme-types.enum';
+import {ColorSchemeTypes} from './enums/color-scheme-types.enum';
 import {TinyColor} from '@ctrl/tinycolor';
-import {ColorGroup} from '../../classes/colorGroup';
-import {getDialogConfig} from '../../helpers/dialogs';
-import {AddEditColorDialogComponent} from '../../shared/dialogs/add-edit-color-dialog/add-edit-color-dialog.component';
+import {ColorGroup} from './models/colorGroup';
+import {getDialogConfig} from '../../../core/helpers/dialogs';
+import {AddEditColorDialogComponent} from './add-edit-color-dialog/add-edit-color-dialog.component';
 import {FormGroup} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
-import {ObjectHelper, StringHelper} from '../../helpers/data';
-import {ConfirmationDialogComponent} from '../../shared/dialogs/confirmation-dialog/confirmation-dialog.component';
+import {ConfirmationDialogComponent} from '../../../core/dialogs/confirmation-dialog/confirmation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {ExternalColorApiGateway} from './rest/external-color-api.gateway';
+import {InternalColorApiGateway} from './rest/internal-color-api-gateway';
+import {ColorApiRequest} from './rest/color-api.request';
+import {ColorApiResponse} from './rest/color-api.response';
+import {StringHelper} from '../../../core/helpers/string';
+import {ObjectHelper} from '../../../core/helpers/object';
 
 @Component({
   selector: 'sgg-colors',
@@ -32,9 +34,11 @@ export class ColorsComponent implements OnInit {
   // Private vars
   private _colorSwatches: Color[] = [];
 
-  constructor(private colorsApiService: ColorsApiService,
-              private dialog: MatDialog,
-              private toastrService: ToastrService) {
+  constructor(
+    private externalColorsApiGateway: ExternalColorApiGateway,
+    private internalColorsApiGateway: InternalColorApiGateway,
+    private dialog: MatDialog,
+    private toastrService: ToastrService) {
   }
 
   ngOnInit() {
@@ -64,16 +68,16 @@ export class ColorsComponent implements OnInit {
     // Set manually added color as a primary color
     color.isPrimary = true;
 
-    this.colorsApiService.getColorInfo(
-      new ColorsApiRequest(
+    this.externalColorsApiGateway.getColorInfo(
+      new ColorApiRequest(
         color.tinyColor,
         null,
         'json'
       ))
-      .subscribe((response: ColorsApiResponse) => {
+      .subscribe((response: ColorApiResponse) => {
         if (response.name &&
-            response.name.value &&
-            color.label !== response.name.value) {
+          response.name.value &&
+          color.label !== response.name.value) {
           const config = getDialogConfig();
 
           config.data = {
@@ -141,7 +145,7 @@ export class ColorsComponent implements OnInit {
 
   // Generate color palettes
   generateAnalogous(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.analogic,
       'json',
@@ -152,7 +156,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateAnalogousComplimentary(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.analogicComplement,
       'json',
@@ -163,7 +167,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateComplementary(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.complement,
       'json',
@@ -174,7 +178,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateMonochromatic(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.monochrome,
       'json',
@@ -185,7 +189,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateMonochromaticDark(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.monochromeDark,
       'json',
@@ -196,7 +200,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateMonochromaticLight(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.monochromeLight,
       'json',
@@ -207,7 +211,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateTriadic(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.triad,
       'json',
@@ -218,7 +222,7 @@ export class ColorsComponent implements OnInit {
   }
 
   generateQuadratic(color: Color) {
-    const request = new ColorsApiRequest(
+    const request = new ColorApiRequest(
       color.tinyColor,
       ColorSchemeTypes.quad,
       'json',
@@ -228,9 +232,9 @@ export class ColorsComponent implements OnInit {
     this.getAndCreateColors(request);
   }
 
-  getAndCreateColors(request: ColorsApiRequest) {
-    this.colorsApiService.getColorScheme(request)
-      .subscribe((response: ColorsApiResponse) => {
+  getAndCreateColors(request: ColorApiRequest) {
+    this.externalColorsApiGateway.getColorScheme(request)
+      .subscribe((response: ColorApiResponse) => {
         // Cut out extra values returned by API
         response.colors.length = request.count;
 
@@ -289,7 +293,7 @@ export class ColorsComponent implements OnInit {
   }
 
   private addColorToSwatches(color: Color) {
-    this.colorsApiService.create('', color)
+    this.internalColorsApiGateway.create('', color)
       .subscribe(result => {
         color._id = result.id;
 

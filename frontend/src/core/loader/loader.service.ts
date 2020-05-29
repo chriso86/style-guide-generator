@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Loader } from './loader.model';
+import {NumberHelper} from '../helpers/number';
 
 @Injectable()
 export class LoaderService {
     private _loaders: Loader[] = [];
 
     buildLoader(states: string[] = [], defaultState: string = ''): Loader {
-        const loaderId = this._loaders.length + 1;
+        const loaderId = NumberHelper.getNextId(this._loaders, 'id');
         const loader = new Loader(loaderId, states, defaultState);
 
         this._loaders.push(loader);

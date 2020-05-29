@@ -1,61 +1,56 @@
 // Angular Dependencies
-import { NgModule } from '@angular/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
-
+import {NgModule} from '@angular/core';
 // Project Dependencies
-import { SggComponent } from './sgg.component';
-import { ColorSwatchComponent } from './shared/color-swatch/color-swatch.component';
-import { FontTypeComponent } from './shared/font-type/font-type.component';
-import { TopHeaderComponent } from './shared/top-header/top-header.component';
-import { PrimaryNavigationComponent } from './shared/primary-navigation/primary-navigation.component';
-import {ROUTES} from './sgg.routes';
-import { HomeComponent } from './pages/home/home.component';
-import { ColorsComponent } from './pages/colors/colors.component';
-import { FontsComponent } from './pages/fonts/fonts.component';
-import { SpacingComponent } from './pages/spacing/spacing.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import {DialogsModule} from './shared/dialogs/dialogs.module';
-import {MaterialModule} from './material.module';
-import {SharedModule} from './shared.module';
-import {ColorsApiService} from './gateways/colors-api.service';
-import {BaseApiService} from './gateways/base-api.service';
+import {SggComponent} from './sgg.component';
+import {HomeComponent} from './pages/home/home.component';
+import {FontsComponent} from './pages/fonts/fonts.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AddNewItemComponent} from './shared/add-new-item/add-new-item.component';
+import {SggRoutingModule} from './sgg-routing.module';
+import {SggDialogCoreModule} from '../core/dialogs/dialog-core.module';
+import {SggErrorCoreModule} from '../core/errors/error-core.module';
+import {SggApiCoreModule} from '../core/rest/api-core.module';
+import {SggAuthCoreModule} from '../core/auth/auth-core.module';
+import {SggFooterCoreModule} from '../core/footer/footer-core.module';
+import {SggLoaderCoreModule} from '../core/loader/loader.module';
+import {SggNotificationCoreModule} from '../core/notification/notification-core.module';
+import {SggPrimaryNavigationCoreModule} from '../core/primary-navigation/primary-navigation-core.module';
+import {SggProjectCoreModule} from '../core/project/project-core.module';
+import {SggHeaderCoreModule} from '../core/header/header-core.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [
+    ToastrModule.forRoot(), // TODO: Chris - Move toastr to core toastr service
+
     // Angular Modules
-    SharedModule,
-    ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    // Flex Layout Modules
     FlexLayoutModule,
-    // Material Design Modules
-    MaterialModule,
-    // Local Modules
-    DialogsModule,
+
+    // Material Design
+    MatIconModule,
+
+    // SGG Core Modules
+    SggAuthCoreModule,
+    SggDialogCoreModule,
+    SggErrorCoreModule,
+    SggFooterCoreModule,
+    SggLoaderCoreModule,
+    SggNotificationCoreModule,
+    SggPrimaryNavigationCoreModule,
+    SggProjectCoreModule,
+    SggApiCoreModule,
+    SggHeaderCoreModule,
+
     // Routing Modules
-    RouterModule.forRoot(ROUTES, {useHash: true})
+    SggRoutingModule
   ],
   declarations: [
     SggComponent,
-    ColorSwatchComponent,
-    FontTypeComponent,
-    TopHeaderComponent,
-    PrimaryNavigationComponent,
-    HomeComponent,
-    ColorsComponent,
-    FontsComponent,
-    SpacingComponent,
-    FooterComponent,
-    AddNewItemComponent
-  ],
-  providers: [
-    BaseApiService,
-    ColorsApiService
+    HomeComponent
   ],
   bootstrap: [SggComponent]
 })
-export class SggModule { }
+export class SggModule {
+}
