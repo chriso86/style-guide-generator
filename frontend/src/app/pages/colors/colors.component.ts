@@ -295,7 +295,7 @@ export class ColorsComponent implements OnInit {
   private addColorToSwatches(color: Color) {
     this.internalColorsApiGateway.create('', color)
       .subscribe(result => {
-        color._id = result.id;
+        color.id = result.id;
 
         this._colorSwatches.push(color);
 

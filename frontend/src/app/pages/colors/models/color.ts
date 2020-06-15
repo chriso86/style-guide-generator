@@ -1,7 +1,7 @@
 import {TinyColor} from '@ctrl/tinycolor';
 
 export class Color {
-  _id: string;
+  id: string;
   label: string = '';
   description: string = '';
   value: string = '';
